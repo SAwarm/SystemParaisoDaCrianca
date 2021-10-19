@@ -59,9 +59,9 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./professores.php">
-                            <i class="nc-icon nc-single-02"></i>
-                            <p>Professores</p>
+                        <a class="nav-link" href="./funcionarios.php">
+                            <i class="nc-icon nc-tag-content"></i>
+                            <p>Funcionários</p>
                         </a>
                     </li>
                     <li>
