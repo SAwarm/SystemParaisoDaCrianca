@@ -21,7 +21,7 @@
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-image="../assets/img/sidebar-5.jpg">
+        <div class="sidebar">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -50,6 +50,24 @@
                         <a class="nav-link" href="./alunos.php">
                             <i class="nc-icon nc-notes"></i>
                             <p>Alunos</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="./turmas.php">
+                            <i class="nc-icon nc-album-2"></i>
+                            <p>Turmas</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="./professores.php">
+                            <i class="nc-icon nc-single-02"></i>
+                            <p>Professores</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="./responsaveis.php">
+                            <i class="nc-icon nc-single-02"></i>
+                            <p>Responsáveis</p>
                         </a>
                     </li>
                     <li>
