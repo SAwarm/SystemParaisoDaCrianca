@@ -1,4 +1,7 @@
-<?php if(!empty($_SESSION['cargo_user'])){ 
+
+<?php session_start(); 
+
+    if(!empty($_SESSION['cargo_user'])){ 
 
     if ($_SESSION['cargo_user'] == "Coordenador(a)"){
         include_once("./menuAcesso/menuAdm.php"); 
@@ -8,7 +11,7 @@
         include_once("./menuAcesso/menuProfessor.php"); 
     }else if ($_SESSION['cargo_user'] == "Auxiliar"){
         include_once("./menuAcesso/menuAuxiliar.php"); 
-    }
+    } ?>
 
             <div class="content">
                 <div class="container-fluid">

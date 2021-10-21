@@ -1,7 +1,7 @@
 <?php 
 
     require_once('./connection.php');
-
+    session_start();
     $senha = $_POST['senha'];
 
     if(!empty($_POST['cargo'])){
@@ -15,7 +15,6 @@
             $result = mysqli_fetch_array($result);
 
             if(!empty($result)){
-                session_start();
                 $_SESSION['cargo_user'] = $cargo;
                 echo "Logado com sucesso";
             }else{
@@ -29,7 +28,6 @@
             $result = mysqli_fetch_array($result);
 
             if(!empty($result)){
-                session_start();
                 $_SESSION['cargo_user'] = "Consulta";
                 echo "Logado com sucesso";
             }else{
