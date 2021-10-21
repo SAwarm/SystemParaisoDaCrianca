@@ -206,10 +206,10 @@ Paginas
           <h4 style="color:#5b3491; text-align: center; ">Tenha acesso já à plataforma <br>de seu filho:</h4><br>
           <div id="responsavel" class="responsavel">
           <label for="matricula"><b>Matrícula</b></label>
-          <input type="text" placeholder="Digite seu número de matrícula" name="matricula" required>
+          <input type="text" placeholder="Digite seu número de matrícula" name="matricula" class="input-matricula-responsavel" required>
           <label for="psw"><b>Senha</b></label>
-          <input type="password" placeholder="Digite sua senha" name="psw" required> 
-        <button  class="btn-colaborador" type="button" style="background-color:#5b3491; color:#cdb0f5;">Entrar</button>
+          <input type="password" placeholder="Digite sua senha" name="psw" class="input-senha-responsavel" required> 
+        <button  class="btn-colaborador" id="btn-responsavel" type="button" style="background-color:#5b3491; color:#cdb0f5;">Entrar</button>
          <span class="psw"><a href="#" align="center" style="color: black;">Esqueceu sua senha?</a></span>
         </div>
         </div>
@@ -356,6 +356,38 @@ Paginas
                 method: "POST",
                 url: "backend/login_users.php",
                 data: { email: email, senha: senha, cargo: cargo },
+                beforeSend : function(){
+                    
+                }
+            })
+            .done(function(msg){
+                if(msg != "Erro no login ou senha"){
+                    $(".message-modal").html("Usuário logado com sucesso!");
+                    $("#exampleModal").modal("show");
+                }else{
+                    $(".message-modal").html(msg);
+                    $("#exampleModal").modal("show");
+                }
+            })
+            .fail(function(jqXHR, textStatus, msg){
+                $(".message-modal").html("Erro no login! Verifique o erro com a administração do sistema.");
+                $("#exampleModal").modal("show");
+            });
+        }
+    });
+
+    $( "#btn-responsavel" ).click(function() {
+        matricula = $('.input-matricula-responsavel').val();
+        senha = $('.input-senha-responsavel').val();
+
+        if (matricula == "" || senha == ""){
+            $(".message-modal").html("Digite algo nos campos de email senha!");
+            $("#exampleModal").modal("show");
+        }else{
+                $.ajax({
+                method: "POST",
+                url: "backend/login_users.php",
+                data: { matricula: matricula, senha: senha},
                 beforeSend : function(){
                     
                 }
