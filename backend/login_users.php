@@ -6,22 +6,18 @@
    $email = $_POST['email'];
    $senha = $_POST['senha'];
 
-   if ($cargo == "Coordenador(a)"){
-
-
-
-   }else if ($cargo == "Professor(a)"){
-
-
-
-   }else if ($cargo == "Auxiliar"){
-
+   if(!empty($cargo)){
         $querySelect = "SELECT * from funcionario inner join funcao on funcionario.funcao = funcao.cod
-        where funcionario.email='$senha' and funcionario.senha='$senha' and funcao.descricao ='Auxiliar'";
+        where funcionario.email='$email' and funcionario.senha='$senha' and funcao.descricao ='$cargo'";
 
-        $result = mysqli_query($link, $querySelect);
-        print_r(mysqli_num_rows($result));
-    
+        $result = mysqli_query($connection, $querySelect);
+        $result = mysqli_fetch_array($result);
+
+        if(!empty($result)){
+            echo "Logado com sucesso";
+        }else{
+            echo "Erro no login ou senha";
+        }
    }else{
-       echo "erro, volte mais tarde e tente novamente";
+        
    }

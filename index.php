@@ -248,6 +248,27 @@ Paginas
         </div>
       </div>
   </section> 
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Mensagem</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body message-modal" style="color: black">
+        
+        <br>
+      </div>
+      <div class="modal-footer">
+          <br>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
         <!--Fim Login Aluno-->  
         <!-- Footer-->
 
@@ -326,14 +347,33 @@ Paginas
         email = $('.input-email').val();
         senha = $('.input-senha').val();
         cargo = $('#cargo_colaborador').val();
-        $.ajax({
-            method: "POST",
-            url: "backend/login_users.php",
-            data: { email: email, senha: senha, cargo: cargo },
-            beforeSend : function(){
-                alert("teste")
-            }
-        })
+
+        if (email == "" || senha == "" || cargo == ""){
+            $(".message-modal").html("Digite algo nos campos de email senha!");
+            $("#exampleModal").modal("show");
+        }else{
+                $.ajax({
+                method: "POST",
+                url: "backend/login_users.php",
+                data: { email: email, senha: senha, cargo: cargo },
+                beforeSend : function(){
+                    
+                }
+            })
+            .done(function(msg){
+                if(msg != "Erro no login ou senha"){
+                    $(".message-modal").html("Usuário logado com sucesso!");
+                    $("#exampleModal").modal("show");
+                }else{
+                    $(".message-modal").html(msg);
+                    $("#exampleModal").modal("show");
+                }
+            })
+            .fail(function(jqXHR, textStatus, msg){
+                $(".message-modal").html("Erro no login! Verifique o erro com a administração do sistema.");
+                $("#exampleModal").modal("show");
+            });
+        }
     });
 
 
