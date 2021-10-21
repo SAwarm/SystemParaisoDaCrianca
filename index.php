@@ -209,7 +209,7 @@ Paginas
           <input type="text" placeholder="Digite seu número de matrícula" name="matricula" required>
           <label for="psw"><b>Senha</b></label>
           <input type="password" placeholder="Digite sua senha" name="psw" required> 
-        <button  class="btn-colaborador" type="submit" style="background-color:#5b3491; color:#cdb0f5;">Entrar</button>
+        <button  class="btn-colaborador" type="button" style="background-color:#5b3491; color:#cdb0f5;">Entrar</button>
          <span class="psw"><a href="#" align="center" style="color: black;">Esqueceu sua senha?</a></span>
         </div>
         </div>
@@ -228,16 +228,16 @@ Paginas
         </div>
 
           <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Digite seu email" name="email" required>
+          <input type="text" placeholder="Digite seu email" name="email_colaborador" class="input-email" required>
           <label for="cargo" style="font-weight: bold;"><br>Cargo<br> </label>
-              <select name="cargo" class="cargo">
+              <select name="cargo_colaborador" class="cargo" id="cargo_colaborador">
                 <option>Coordenador(a)</option>
                 <option>Professor(a)</option>
                 <option>Auxiliar</option>
               </select>
           <label for="psw"><b>Senha</b></label>
-          <input type="password" placeholder="Digite sua senha" name="psw" required> 
-        <button  class="btn-colaborador" type="submit" style="background-color:#5b3491; color:#cdb0f5;">Entrar</button>
+          <input type="password" placeholder="Digite sua senha" name="senha_colaborador" class="input-senha" required> 
+        <button  class="btn-colaborador" type="button" style="background-color:#5b3491; color:#cdb0f5;" id="btn-colaborador">Entrar</button>
         <div class="container" style="background-color:#f1f1f1">
           <button type="button"  onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
           <span class="psw"><a href="#" style="color: black;">Esqueceu sua senha?</a></span>
@@ -319,3 +319,22 @@ Paginas
         <script src="js/scripts.js"></script>
     </body>
 </html>
+
+<script>
+
+    $( "#btn-colaborador" ).click(function() {
+        email = $('.input-email').val();
+        senha = $('.input-senha').val();
+        cargo = $('#cargo_colaborador').val();
+        $.ajax({
+            method: "POST",
+            url: "backend/login_users.php",
+            data: { email: email, senha: senha, cargo: cargo },
+            beforeSend : function(){
+                alert("teste")
+            }
+        })
+    });
+
+
+</script>
