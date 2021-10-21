@@ -1,4 +1,14 @@
-<?php include_once("menu.php"); ?>
+<?php if(!empty($_SESSION['cargo_user'])){ 
+
+    if ($_SESSION['cargo_user'] == "Coordenador(a)"){
+        include_once("./menuAcesso/menuAdm.php"); 
+    } else if ($_SESSION['cargo_user'] == "Coordenador(a)"){
+        include_once("./menuAcesso/menuCoordenador.php"); 
+    }else if ($_SESSION['cargo_user'] == "Professor(a)"){
+        include_once("./menuAcesso/menuProfessor.php"); 
+    }else if ($_SESSION['cargo_user'] == "Auxiliar"){
+        include_once("./menuAcesso/menuAuxiliar.php"); 
+    }
 
             <div class="content">
                 <div class="container-fluid">
@@ -158,3 +168,6 @@
 <script src="../assets/js/demo.js"></script>
 
 </html>
+<?php } else{
+    include_once('./erro.php');
+}

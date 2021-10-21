@@ -364,6 +364,7 @@ Paginas
                 if(msg != "Erro no login ou senha"){
                     $(".message-modal").html("Usuário logado com sucesso!");
                     $("#exampleModal").modal("show");
+                    setTimeout(() => { location.replace('./admin/telas/perfil_usuario.php');  }, 2000);
                 }else{
                     $(".message-modal").html(msg);
                     $("#exampleModal").modal("show");
@@ -389,13 +390,14 @@ Paginas
                 url: "backend/login_users.php",
                 data: { matricula: matricula, senha: senha},
                 beforeSend : function(){
-                    
+                    // depois do envio
                 }
             })
             .done(function(msg){
                 if(msg != "Erro no login ou senha"){
                     $(".message-modal").html("Usuário logado com sucesso!");
                     $("#exampleModal").modal("show");
+                    setTimeout(() => { location.replace('./admin/telas/perfil_usuario.php');  }, 2000);
                 }else{
                     $(".message-modal").html(msg);
                     $("#exampleModal").modal("show");
