@@ -357,41 +357,46 @@
             event.preventDefault();
         }*/
 
-        $.ajax({
-                method: "POST",
-                url: "backend/cadastro_funcionario.php",
-                data: { nome: nome, 
-                        email: email,
-                        data_nasc: data_nasc,
-                        data_ingresso: data_ingresso,
-                        file : file,
-                        observacao: observacao,
-                        descricao: descricao,
-                        cpf: cpf,
-                        rg: rg,
-                        carga: carga,
-                        formacao: formacao,
-                        restricoes: restricoes,
-                        doencas: doencas,
-                        tipo_sang: tipo_sang,
-                        funcao: funcao,
-                        genero: genero,
-                        estado: estado,
-                        municipio: municipio,
-                        bairro: bairro,
-                        rua: rua
-                        numero_casa: numero_casa,
-                        complemento: complemento},
-                beforeSend : function(){
-                    
-                }
-            })
-            .done(function(msg){
-                
-            })
-            .fail(function(jqXHR, textStatus, msg){
-                
-            });
+        var data = new FormData();
+            jQuery.each(jQuery('.file-user')[0].files, function(i, file) {
+            data.append('file-'+i, file);
+        });
+
+        data.append('nome', nome);
+        data.append('email', email);
+        data.append('data_nasc', data_nasc);
+        data.append('data_ingresso', data_ingresso);
+        data.append('observacao', observacao);
+        data.append('descricao', descricao);
+        data.append('cpf', cpf);
+        data.append('rg', rg);
+        data.append('carga', carga);
+        data.append('formacao', formacao);
+        data.append('restricoes', restricoes);
+        data.append('doencas', doencas);
+        data.append('tipo_sang', tipo_sang);
+        data.append('funcao', funcao);
+        data.append('genero', genero);
+        data.append('estado', estado);
+        data.append('municipio', municipio);
+        data.append('bairro', bairro);
+        data.append('rua', rua);
+        data.append('numero_casa', numero_casa);
+        data.append('complemento', complemento);
+        
+
+        jQuery.ajax({
+            url: 'backend/cadastro_funcionario.php',
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            method: 'POST',
+            type: 'POST', // For jQuery < 1.9
+            success: function(data){
+                // alert(data);
+            }
+        });
     })
 
     $(".btn-add-document").click(function(){

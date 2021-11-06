@@ -1,7 +1,9 @@
 <?php
-   require_once('./connection.php');
+   //require_once('./connection.php');
 
-   $nome = $_POST['nome'];
+
+   print_r($_POST);
+   /*$nome = $_POST['nome'];
    $email = $_POST['email'];
    $data_nasc = $_POST['data_nasc'];
    $data_ingresso = $_POST['data_ingresso'];
@@ -151,4 +153,4 @@
             $senha
         )";
 
-    
+    */
