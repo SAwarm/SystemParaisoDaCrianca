@@ -7,3 +7,5 @@ foto tem que ser nula
 parentesco pode ser nulo
 
 função tem que ser adicionado estaticamente
+
+ver o type na descricao, tabela genero

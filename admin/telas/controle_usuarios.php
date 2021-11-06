@@ -38,7 +38,7 @@
                             </div>
                         </div>
 
-<div class="modal fade" id="modal-users" style="margin-top: -300px; overflow-y:auto;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-users" style="margin-top: -500px; overflow-y:auto;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -93,6 +93,10 @@
             <div class="form-group btn-add-document-div">  
                 <label for="message-text" class="col-form-label">Documento:</label>
                 <a type="button" href="#" class="btn btn-primary btn-fill btn-add-document" style="margin-right: 62.5%;">Adicionar Documento</a>                
+            </div>
+            <div class="form-group btn-add-address-div">  
+                <label for="message-text" class="col-form-label">Endereço:</label>
+                <a type="button" href="#" class="btn btn-primary btn-fill btn-add-address" style="margin-right: 62.5%;">Adicionar Endereço</a>                
             </div>
             <div class="form-group date-carga-div">
                 <label for="message-text" class="col-form-label">Carga em horas:</label>
@@ -155,11 +159,11 @@
             </div>
             <div class="form-group cpf-document-div">
                 <label for="message-text" class="col-form-label">CPF:</label>
-                <input type="date" class="form-control cpf-document" id="message-text cpf-document"></input>
+                <input type="number" class="form-control cpf-document" id="message-text cpf-document"></input>
             </div>
             <div class="form-group rg-document-div">  
                 <label for="message-text" class="col-form-label">RG:</label>
-                <input type="date" class="form-control rg-document" id="message-text rg-document"></input>
+                <input type="number" class="form-control rg-document" id="message-text rg-document"></input>
             </div>
         </form>
         <br>
@@ -167,6 +171,56 @@
       <div class="modal-footer">
           <br>
         <button type="button" class="btn btn-primary btn-fill btn-document" style="cursor: pointer;">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-address" style="margin-top: -100px; overflow-y:auto; background-color: rgba(0,0,0,0.5);" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabe2l">Cadastro Novo Endereço</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body message-modal" style="color: black">
+        <form>
+             <div class="form-group estado-user-div">  
+                <label for="message-text" class="col-form-label">Estado:</label>
+                <select type="date" class="form-control estado-user" id="message-text estado-user">
+                    <option value="sc">SC</option>
+                    <option value="pr">PR</option>
+                    <option value="rs">RS</option>
+                </select>
+            </div>
+            <div class="form-group municipio-div">
+                <label for="descricao-document" class="col-form-label">Município:</label>
+                <input type="text" class="form-control municipio" id="municipio">
+            </div>
+            <div class="form-group bairro-div">
+                <label for="message-text" class="col-form-label">Bairro:</label>
+                <input type="text" class="form-control bairro" id="message-text bairro"></input>
+            </div>
+            <div class="form-group rua-div">  
+                <label for="message-text" class="col-form-label">Rua:</label>
+                <input type="text" class="form-control rua" id="message-text rua"></input>
+            </div>
+            <div class="form-group numero-div">  
+                <label for="message-text" class="col-form-label">Número:</label>
+                <input type="number" class="form-control numero-casa" id="message-text numero-casa"></input>
+            </div>
+            <div class="form-group complemento-div">  
+                <label for="message-text" class="col-form-label">Complemento:</label>
+                <input type="text" class="form-control complemento" id="message-text complemento"></input>
+            </div>
+        </form>
+        <br>
+      </div>
+      <div class="modal-footer">
+          <br>
+        <button type="button" class="btn btn-primary btn-fill btn-address" style="cursor: pointer;">Salvar</button>
       </div>
     </div>
   </div>
@@ -218,7 +272,7 @@
         
     })
 
-    $( ".btn-send-users" ).click(function() {
+    $( ".btn-send-users" ).click(function(event) {
         nome = $('.nome-user').val();
         email = $('.date-email').val();
         data_nasc = $('.date-nasc').val();
@@ -233,9 +287,17 @@
         restricoes = $('.restricoes-user').val();
         doencas = $('.doencas-user').val();
         tipo_sang = $('.tipo-sanguineo').val();
+        funcao = $('.function-user').val();
+        genero = $('.genero-user').val();
+        estado = $('.estado-user').val();
+        municipio = $('.municipio').val();
+        bairro = $('.bairro').val();
+        rua = $('.rua').val();
+        numero_casa = $('.numero-casa').val();
+        complemento =$('.complemento').val();
         msg = "";
 
-        if(nome == ""){
+        /*if(nome == ""){
             msg += "Nome";
         }
         if(email == ""){
@@ -277,37 +339,67 @@
         if(tipo_sang == ""){
             msg += " Tipo sanguíneo";
         }
+        if(estado == ""){
+            msg += " Estado";
+        }
+        if(municipio == ""){
+            msg += " Município";
+        }
+        if(bairro == ""){
+            msg += " Bairro";
+        }
+        if(rua == ""){
+            msg += " Rua";
+        }
 
         if(msg != ""){
-            alert("Digite os campos de: "+ msg)
-        }
+            alert("Digite os campos de: "+ msg);
+            event.preventDefault();
+        }*/
 
         $.ajax({
                 method: "POST",
-                url: "backend/login_users.php",
-                data: { email: email, senha: senha, cargo: cargo },
+                url: "backend/cadastro_funcionario.php",
+                data: { nome: nome, 
+                        email: email,
+                        data_nasc: data_nasc,
+                        data_ingresso: data_ingresso,
+                        file : file,
+                        observacao: observacao,
+                        descricao: descricao,
+                        cpf: cpf,
+                        rg: rg,
+                        carga: carga,
+                        formacao: formacao,
+                        restricoes: restricoes,
+                        doencas: doencas,
+                        tipo_sang: tipo_sang,
+                        funcao: funcao,
+                        genero: genero,
+                        estado: estado,
+                        municipio: municipio,
+                        bairro: bairro,
+                        rua: rua
+                        numero_casa: numero_casa,
+                        complemento: complemento},
                 beforeSend : function(){
                     
                 }
             })
             .done(function(msg){
-                if(msg != "Erro no login ou senha"){
-                    $(".message-modal").html("Usuário logado com sucesso!");
-                    $("#exampleModal").modal("show");
-                    setTimeout(() => { location.replace('./admin/telas/perfil_usuario.php');  }, 2000);
-                }else{
-                    $(".message-modal").html(msg);
-                    $("#exampleModal").modal("show");
-                }
+                
             })
             .fail(function(jqXHR, textStatus, msg){
-                $(".message-modal").html("Erro no login! Verifique o erro com a administração do sistema.");
-                $("#exampleModal").modal("show");
+                
             });
     })
 
     $(".btn-add-document").click(function(){
         $('#modal-document').modal('show');
+    })
+
+    $(".btn-add-address").click(function(){
+        $('#modal-address').modal('show');
     })
 
     $(".btn-document").click(function(){
