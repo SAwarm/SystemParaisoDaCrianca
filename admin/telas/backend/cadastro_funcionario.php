@@ -1,6 +1,5 @@
 <?php
-    require_once('./connection.php');
-   // print_r($_POST['nome']) ;
+   require_once('./connection.php');
 
    $nome = $_POST['nome'];
    $email = $_POST['email'];
@@ -42,6 +41,24 @@
         $funcao = 1;
     }else if($funcao == "Responsável"){
         $funcao = 4;
+    }
+
+    if($tipo_sang == "a_positivo"){
+        $tipo_sang = 1;
+    }else if($tipo_sang == "a_negativo"){
+        $tipo_sang = 2;
+    }else if($tipo_sang == "b_positivo"){
+        $tipo_sang = 3;
+    }else if($tipo_sang == "b_negativo"){
+        $tipo_sang = 4;
+    }else if($tipo_sang == "ab_positivo"){
+        $tipo_sang = 5;
+    }else if($tipo_sang == "ab_negativo"){
+        $tipo_sang = 6;
+    }else if($tipo_sang == "o_positivo"){
+        $tipo_sang = 7;
+    }else if($tipo_sang == "o_negativo"){
+        $tipo_sang = 8;
     }
 
     function CadastroDocument($descricao, $cpf, $rg){
