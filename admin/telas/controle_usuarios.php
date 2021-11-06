@@ -203,7 +203,6 @@
     });
 
     $(window).resize(function () {
-        $("#modal-document").niceScroll();
         if($( document ).width() >= 950 ){
             $('.nav-mobile-menu').hide();
         }else{
@@ -224,49 +223,87 @@
         email = $('.date-email').val();
         data_nasc = $('.date-nasc').val();
         data_ingresso = $('.date-ingresso').val();
+        file = $('.file-user').val();
+        observacao = $('.observation-user').val();
+        descricao = $('.descricao-document').val();
+        cpf = $('.cpf-document').val();
+        rg = $('.rg-document').val();
+        carga = $('.date-carga').val();
+        formacao = $('.date-formacao').val();
+        restricoes = $('.restricoes-user').val();
+        doencas = $('.doencas-user').val();
+        tipo_sang = $('.tipo-sanguineo').val();
+        msg = "";
+
         if(nome == ""){
+            msg += "Nome";
+        }
+        if(email == ""){
+           msg += " Email";
+        }
+        if(data_nasc == ""){
+            msg += " Data nascimento";
+        }
+        if(data_ingresso == ""){
+            msg += " Data ingresso";
+        }
+        if(file == ""){
+            msg += " Foto";
+        }
+        if(observacao == ""){
+            msg += " Observação";
+        }
+        if(descricao == ""){
+            msg += " Descrição";
+        }
+        if(cpf == ""){
+            msg += " CPF";
+        }
+        if(rg == ""){
+            msg += " RG";
+        }
+        if(carga == ""){
+            msg += " Carga";
+        }
+        if(formacao == ""){
+            msg += " Formação";
+        }
+        if(restricoes == ""){
+            msg += " Restrições alimentares";
+        }
+        if(doencas == ""){
+            msg += " Doenças";
+        }
+        if(tipo_sang == ""){
+            msg += " Tipo sanguíneo";
+        }
 
-        }
-        if( == ""){
-            
-        }
-        if( == ""){
-            
-        }
-        if( == ""){
-            
-        }
-        if($('.file-user').val() == ""){
-            
-        }
-        if($('.observation-user').val() == ""){
-            
-        }
-        if($('.descricao-document').val() == ""){
-            
-        }
-        if($('.cpf-document').val() == ""){
-            
-        }
-        if($('.rg-document').val() == ""){
-            
-        }
-        if($('.date-carga').val() == ""){
-            
-        }
-        if($('.date-formacao').val() == ""){
-            
-        }
-        if($('.restricoes-user').val() == ""){
-            
-        }
-        if($('.doencas-user').val() == ""){
-            
-        }
-        if($('.tipo-sanguineo').val() == ""){
-            
+        if(msg != ""){
+            alert("Digite os campos de: "+ msg)
         }
 
+        $.ajax({
+                method: "POST",
+                url: "backend/login_users.php",
+                data: { email: email, senha: senha, cargo: cargo },
+                beforeSend : function(){
+                    
+                }
+            })
+            .done(function(msg){
+                if(msg != "Erro no login ou senha"){
+                    $(".message-modal").html("Usuário logado com sucesso!");
+                    $("#exampleModal").modal("show");
+                    setTimeout(() => { location.replace('./admin/telas/perfil_usuario.php');  }, 2000);
+                }else{
+                    $(".message-modal").html(msg);
+                    $("#exampleModal").modal("show");
+                }
+            })
+            .fail(function(jqXHR, textStatus, msg){
+                $(".message-modal").html("Erro no login! Verifique o erro com a administração do sistema.");
+                $("#exampleModal").modal("show");
+            });
     })
 
     $(".btn-add-document").click(function(){
