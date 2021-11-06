@@ -5,3 +5,5 @@ email não pode ser nulo
 foto tem que ser nula
 
 parentesco pode ser nulo
+
+função tem que ser adicionado estaticamente

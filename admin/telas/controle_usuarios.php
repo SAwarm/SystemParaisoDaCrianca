@@ -20,61 +20,18 @@
                             </div>
                             <div class="card strpied-tabled-with-hover">
                                 <div class="card-header ">
-                                    <h4 class="card-title">Striped Table with Hover</h4>
-                                    <p class="card-category">Here is a subtitle for this table</p>
+                                    <h4 class="card-title">Controle dos Funcionários</h4>
                                 </div>
                                 <div class="card-body table-full-width table-responsive">
                                     <table class="table table-hover table-striped">
                                         <thead>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Salary</th>
-                                            <th>Country</th>
-                                            <th>City</th>
+                                            <th>Id</th>
+                                            <th>Nome</th>
+                                            <th>Função</th>
+                                            <th>Email</th>
+                                            <th>Opções</th>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Dakota Rice</td>
-                                                <td>$36,738</td>
-                                                <td>Niger</td>
-                                                <td>Oud-Turnhout</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Minerva Hooper</td>
-                                                <td>$23,789</td>
-                                                <td>Curaçao</td>
-                                                <td>Sinaai-Waas</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Sage Rodriguez</td>
-                                                <td>$56,142</td>
-                                                <td>Netherlands</td>
-                                                <td>Baileux</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Philip Chaney</td>
-                                                <td>$38,735</td>
-                                                <td>Korea, South</td>
-                                                <td>Overland Park</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Doris Greene</td>
-                                                <td>$63,542</td>
-                                                <td>Malawi</td>
-                                                <td>Feldkirchen in Kärnten</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>Mason Porter</td>
-                                                <td>$78,615</td>
-                                                <td>Chile</td>
-                                                <td>Gloucester</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -107,7 +64,7 @@
             </div>
             <div class="form-group date-email-div">
                 <label for="message-text" class="col-form-label">Email:</label>
-                <input type="date" class="form-control date-email" id="message-text date-email"></input>
+                <input type="text" class="form-control date-email" id="message-text date-email"></input>
             </div>
             <div class="form-group date-nasc-div">  
                 <label for="message-text" class="col-form-label">Data de Nascimento:</label>
@@ -118,7 +75,7 @@
                 <input type="date" class="form-control date-ingresso" id="message-text date-ingresso"></input>
             </div>
             <div class="form-group genero-user-div">  
-                <label for="message-text" class="col-form-label">Gênero</label>
+                <label for="message-text" class="col-form-label">Gênero:</label>
                 <select type="date" class="form-control genero-user" id="message-text genero-user">
                     <option value="Masculino">Masculino</option>
                     <option value="Feminino">Feminino</option>
@@ -136,6 +93,39 @@
             <div class="form-group btn-add-document-div">  
                 <label for="message-text" class="col-form-label">Documento:</label>
                 <a type="button" href="#" class="btn btn-primary btn-fill btn-add-document" style="margin-right: 62.5%;">Adicionar Documento</a>                
+            </div>
+            <div class="form-group date-carga-div">
+                <label for="message-text" class="col-form-label">Carga em horas:</label>
+                <input type="number" class="form-control date-carga" id="message-text date-carga"></input>
+            </div>
+            <div class="form-group date-formacao-div">
+                <label for="message-text" class="col-form-label">Formação:</label>
+                <input type="text" class="form-control date-formacao" id="message-text date-formacao"></input>
+            </div>
+            <div class="form-group restricoes-div">
+                <label for="message-text" class="col-form-label">Restrições alimentares:</label>
+                <textarea type="textarea" class="form-control restricoes-user" id="message-text restricoes-user"></textarea>
+            </div>
+            <div class="form-group doencas-div">
+                <label for="message-text" class="col-form-label">Doenças:</label>
+                <textarea type="textarea" class="form-control doencas-user" id="message-text doencas-user"></textarea>
+            </div>
+            <div class="form-group tipo-sanguineo-div">  
+                <label for="message-text" class="col-form-label">Tipo sanguíneo:</label>
+                <select type="date" class="form-control tipo-sanguineo" id="message-text tipo-sanguineo">
+                    <option value="a_positivo">A+</option>
+                    <option value="a_negativo">A-</option>
+                    <option value="b_positivo">B+</option>
+                    <option value="b_negativo">B-</option>
+                    <option value="ab_positivo">AB+</option>
+                    <option value="ab_negativo">AB-</option>
+                    <option value="o_positivo">O+</option>
+                    <option value="o_negativo">O-</option>
+                </select>
+            </div>
+            <div class="form-group senha-div">
+                <label for="message-text" class="col-form-label">Formação:</label>
+                <input type="text" class="form-control date-senha" id="message-text date-senha"></input>
             </div>
         </form>
         <br>
@@ -204,6 +194,14 @@
 
 <script>
 
+    $(document).ready(function() {
+        $('.senha-div').hide();
+    });
+
+    $( ".function-user" ).change(function() {
+        //
+    });
+
     $(window).resize(function () {
         $("#modal-document").niceScroll();
         if($( document ).width() >= 950 ){
@@ -222,7 +220,53 @@
     })
 
     $( ".btn-send-users" ).click(function() {
-        
+        nome = $('.nome-user').val();
+        email = $('.date-email').val();
+        data_nasc = $('.date-nasc').val();
+        data_ingresso = $('.date-ingresso').val();
+        if(nome == ""){
+
+        }
+        if( == ""){
+            
+        }
+        if( == ""){
+            
+        }
+        if( == ""){
+            
+        }
+        if($('.file-user').val() == ""){
+            
+        }
+        if($('.observation-user').val() == ""){
+            
+        }
+        if($('.descricao-document').val() == ""){
+            
+        }
+        if($('.cpf-document').val() == ""){
+            
+        }
+        if($('.rg-document').val() == ""){
+            
+        }
+        if($('.date-carga').val() == ""){
+            
+        }
+        if($('.date-formacao').val() == ""){
+            
+        }
+        if($('.restricoes-user').val() == ""){
+            
+        }
+        if($('.doencas-user').val() == ""){
+            
+        }
+        if($('.tipo-sanguineo').val() == ""){
+            
+        }
+
     })
 
     $(".btn-add-document").click(function(){
