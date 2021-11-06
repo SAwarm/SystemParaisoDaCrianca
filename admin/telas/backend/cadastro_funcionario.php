@@ -5,7 +5,8 @@
    $email = $_POST['email'];
    $data_nasc = $_POST['data_nasc'];
    $data_ingresso = $_POST['data_ingresso'];
-   $file = $_POST['observacao'];
+   $file = $_POST['file'];
+   $observacao = $_POST['observacao'];
    $descricao = $_POST['descricao'];
    $cpf = $_POST['cpf'];
    $rg = $_POST['rg'];
@@ -14,7 +15,6 @@
    $restricoes = $_POST['restricoes'];
    $doencas = $_POST['doencas'];
    $tipo_sang = $_POST['tipo_sang'];
-   $doencas = $_POST['doencas'];
    $funcao = $_POST['funcao'];
    $genero = $_POST['genero'];
    $estado = $_POST['estado'];
@@ -82,7 +82,7 @@
         return mysqli_insert_id();
    }
 
-   function CadastroFuncao($formacao){
+   function CadastroFormacao($formacao){
         $queryInsert = "INSERT INTO formacao (descricao) VALUES ($formacao)";
 
         $result = mysqli_query($connection, $queryInsert);
@@ -96,6 +96,59 @@
         return mysqli_insert_id();
     }
 
+    function CadastroDoencas($doencas){
+        $queryInsert = "INSERT INTO doencaspre (descricao) VALUES ($doencas)";
 
+        $result = mysqli_query($connection, $queryInsert);
+        return mysqli_insert_id();
+    }
+
+    $doctos = CadastroDocument($descricao, $cpf, $rg);
+    $endereco = CadastroAddress($estado, $municipio, $bairro, $rua, $numero_casa, $complemento);
+    $cargah =  CadastroCarga($carga);
+    $formacaoFunc = CadastroFormacao($formacao);
+    $restAlim = CadastroRestAlimentar($restricoes);
+    $doenc = CadastroDoencas($doencas);
+
+    $senha = $funcao.$nome.$data_nasc.$formacao.$genero;
+
+    $queryInsert = "INSERT INTO funcionario 
+        (
+            nome,
+            email,
+            datanasc,
+            datadeingresso,
+            foto,
+            obs,
+            doctos,
+            genero,
+            endereco,
+            funcao,
+            cargah,
+            formacao,
+            restalimentar,
+            doencaspre,
+            tipo_sangue,
+            senha
+        ) 
+        VALUES 
+        (
+            $nome,
+            $email,
+            $data_nasc,
+            $datadeingresso,
+            $file,
+            $observacao,
+            $doctos,
+            $genero,
+            $endereco,
+            $funcao,
+            $cargah,
+            $formacaoFunc,
+            $restAlim,
+            $doenc,
+            $tipo_sang,
+            $senha
+        )";
 
     
