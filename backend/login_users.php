@@ -6,6 +6,12 @@
 
     if(!empty($_POST['cargo'])){
             $cargo = $_POST['cargo'];
+
+            if($cargo == "Coordenador(a)"){
+                $cargo = "Coordenador";
+            }else if($cargo == "Professor(a)"){
+                $cargo = "Professor";
+            }
             $email = $_POST['email'];
 
             $querySelect = "SELECT * from funcionario inner join funcao on funcionario.funcao = funcao.cod

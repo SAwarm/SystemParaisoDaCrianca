@@ -45,24 +45,6 @@
                             <p>Notas</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./alunos.php">
-                            <i class="nc-icon nc-notes"></i>
-                            <p>Alunos</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./turmas.php">
-                            <i class="nc-icon nc-album-2"></i>
-                            <p>Turmas</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./controle_usuarios.php">
-                            <i class="nc-icon nc-paper-2"></i>
-                            <p>Controle de Usuários</p>
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>

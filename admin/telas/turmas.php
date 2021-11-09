@@ -1,4 +1,18 @@
-<?php include_once("menu.php"); ?>
+<?php session_start(); 
+
+            if(!empty($_SESSION['cargo_user'])){ 
+
+            if ($_SESSION['cargo_user'] == "Coordenador"){
+                include_once("./menuAcesso/menuAdm.php"); 
+            } else if ($_SESSION['cargo_user'] == "Coordenador"){
+                include_once("./menuAcesso/menuCoordenador.php"); 
+            }else if ($_SESSION['cargo_user'] == "Professor"){
+                include_once('./erro.php');
+                die();
+            }else if ($_SESSION['cargo_user'] == "Auxiliar"){
+                include_once('./erro.php');
+                die();
+            } ?>    
 
 <script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
@@ -17,3 +31,7 @@
 <script src="../assets/js/demo.js"></script>
 
 </html>
+
+<?php } else{
+    include_once('./erro.php');
+}

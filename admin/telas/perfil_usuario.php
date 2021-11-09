@@ -3,11 +3,11 @@
 
     if(!empty($_SESSION['cargo_user'])){ 
 
-    if ($_SESSION['cargo_user'] == "Coordenador(a)"){
+    if ($_SESSION['cargo_user'] == "Coordenador"){
         include_once("./menuAcesso/menuAdm.php"); 
-    } else if ($_SESSION['cargo_user'] == "Coordenador(a)"){
+    } else if ($_SESSION['cargo_user'] == "Coordenador"){
         include_once("./menuAcesso/menuCoordenador.php"); 
-    }else if ($_SESSION['cargo_user'] == "Professor(a)"){
+    }else if ($_SESSION['cargo_user'] == "Professor"){
         include_once("./menuAcesso/menuProfessor.php"); 
     }else if ($_SESSION['cargo_user'] == "Auxiliar"){
         include_once("./menuAcesso/menuAuxiliar.php"); 

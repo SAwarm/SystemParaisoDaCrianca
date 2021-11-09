@@ -9,3 +9,7 @@ parentesco pode ser nulo
 função tem que ser adicionado estaticamente
 
 ver o type na descricao, tabela genero
+
+adicionar tabela notas
+
+

@@ -59,18 +59,6 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./funcionarios.php">
-                            <i class="nc-icon nc-tag-content"></i>
-                            <p>Funcionários</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./responsaveis.php">
-                            <i class="nc-icon nc-single-02"></i>
-                            <p>Responsáveis</p>
-                        </a>
-                    </li>
-                    <li>
                         <a class="nav-link" href="./controle_usuarios.php">
                             <i class="nc-icon nc-paper-2"></i>
                             <p>Controle de Usuários</p>

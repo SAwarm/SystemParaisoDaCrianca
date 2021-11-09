@@ -1,18 +1,19 @@
-<!--
-=========================================================
- Light Bootstrap Dashboard - v2.0.1
-=========================================================
 
- Product Page: https://www.creative-tim.com/product/light-bootstrap-dashboard
- Copyright 2019 Creative Tim (https://www.creative-tim.com)
- Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard/blob/master/LICENSE)
+    <?php session_start(); 
 
- Coded by Creative Tim
+    if(!empty($_SESSION['cargo_user'])){ 
 
-=========================================================
-
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  -->
-<?php include_once("menu.php"); ?>
+        if ($_SESSION['cargo_user'] == "Coordenador"){
+            include_once("./menuAcesso/menuAdm.php"); 
+        } else if ($_SESSION['cargo_user'] == "Coordenador"){
+            include_once("./menuAcesso/menuCoordenador.php"); 
+        }else if ($_SESSION['cargo_user'] == "Professor"){
+            include_once('./erro.php');
+            die();
+        }else if ($_SESSION['cargo_user'] == "Auxiliar"){
+            include_once('./erro.php');
+            die();
+        } ?> 
             <!-- End Navbar -->
             <div class="content">
                 <div class="container-fluid">
@@ -202,3 +203,7 @@
 <script src="../assets/js/demo.js"></script>
 
 </html>
+
+<?php } else{
+    include_once('./erro.php');
+}
