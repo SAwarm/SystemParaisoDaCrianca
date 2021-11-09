@@ -30,7 +30,7 @@
                                             <th>Turma</th>
                                             <th>Opções</th>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="popularTurmas">
                                         </tbody>
                                     </table>
                                 </div>
@@ -85,6 +85,10 @@
     $( ".btn-add-user" ).click(function() {
         $('#modal-turmas').modal('show');
     });
+
+    $( document ).ready(function() {
+        popularTableTurmas();
+    });
     
     $( ".btn-add-turma").click(function() {
         turma = $('.turma').val();
@@ -94,9 +98,36 @@
             method: 'POST',
             success: function(data){
                  alert(data);
+                 $('#modal-turmas').modal('hide');
+                 popularTableTurmas();
             }
         });
     });
+
+    function popularTableTurmas(){
+        $.ajax({
+            url: 'backend/select_turma.php',
+            method: 'POST',
+            success: function(data){
+                cols = "";
+                 if(data != "null"){
+
+                    jq_json_obj = $.parseJSON(data);
+                    cont = jq_json_obj.length
+                    for (x = 0; x < cont; x++){
+                        cols += '<tr><td scope="row">'+jq_json_obj[x][0]+'</td>';
+                        cols += '<td>'+jq_json_obj[x][1]+'</td>';
+                        cols += '<td><button type="button" data-id="'+jq_json_obj[x][0]+'" style="margin-right: 10px;" class="btn btn-success btn-edit-turma"><i class="far fa-edit"></i></button>'+
+                                    '<button type="button" class="btn btn-danger btn-exclude-turma"><i class="fas fa-times-circle"></i></button></td></tr>';
+                        $("#popularTurmas").html(cols);
+                    }
+                 }else{
+                     alert("erro");
+                 }
+            }
+        });
+    }
+
 </script>
 
 <?php } else{

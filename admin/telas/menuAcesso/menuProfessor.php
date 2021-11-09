@@ -16,6 +16,7 @@
     <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/css/demo.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/dacbc0308b.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
