@@ -73,6 +73,12 @@
                     <option value="Outros">Outros</option>
                 </select>
             </div>
+            <div class="form-group turma-user-div">  
+                <label for="message-text" class="col-form-label">Gênero:</label>
+                <select type="date" class="form-control genero-user" id="message-text genero-user">
+                    <option value="1B">teste</option>
+                </select>
+            </div>
             <div class="form-group file-user-div">  
                 <label for="message-text" class="col-form-label">Foto:</label>
                 <input type="file" class="form-control file-user" id="message-text file-user"></input>
