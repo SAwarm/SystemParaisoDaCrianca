@@ -84,22 +84,59 @@
 <script>    
     $( ".btn-add-user" ).click(function() {
         $('#modal-turmas').modal('show');
+        $('.btn-add-turma').html('Adicionar');
+        $('#exampleModalLabe2l').html('Cadastro Nova Turma');
     });
 
     $( document ).ready(function() {
         popularTableTurmas();
     });
     
-    $( ".btn-add-turma").click(function() {
+    $( ".btn-add-turma").click(function(e) {
         turma = $('.turma').val();
+        
+        if($('.btn-add-turma').html() == "Salvar"){
+            id = $(this).attr('data-id');
+            $.ajax({
+                url: 'backend/update_turma.php',
+                data: {id: id, turma: turma},
+                method: 'POST',
+                success: function(data){
+                    alert(data);
+                    $('#modal-turmas').modal('hide');
+                    popularTableTurmas();
+                    $('.turma').val('');
+                }
+            });
+        }else{
+            $.ajax({
+                url: 'backend/cadastro_turma.php',
+                data: {turma: turma},
+                method: 'POST',
+                success: function(data){
+                    alert(data);
+                    $('#modal-turmas').modal('hide');
+                    popularTableTurmas();
+                    $('.turma').val('');
+                }
+            });
+        }
+    });
+
+    $(document).on('click','.btn-edit-turma', function(){
+        $('.turma').val('');
+        id = $(this).attr('data-id');
+        $('.btn-add-turma').attr('data-id', id);
         $.ajax({
-            url: 'backend/cadastro_turma.php',
-            data: {turma: turma},
+            url: 'backend/select_turma.php',
+            data: {edit: true, id: id},
             method: 'POST',
             success: function(data){
-                 alert(data);
-                 $('#modal-turmas').modal('hide');
-                 popularTableTurmas();
+                jq_json_obj = $.parseJSON(data);
+                $('#modal-turmas').modal('show');
+                $('.turma').val(jq_json_obj[0][1]);
+                $('.btn-add-turma').html('Salvar');
+                $('#exampleModalLabe2l').html('Editando Turma');
             }
         });
     });
@@ -117,7 +154,7 @@
                     for (x = 0; x < cont; x++){
                         cols += '<tr><td scope="row">'+jq_json_obj[x][0]+'</td>';
                         cols += '<td>'+jq_json_obj[x][1]+'</td>';
-                        cols += '<td><button type="button" data-id="'+jq_json_obj[x][0]+'" style="margin-right: 10px;" class="btn btn-success btn-edit-turma"><i class="far fa-edit"></i></button>'+
+                        cols += '<td><a type="button" href="#" data-id="'+jq_json_obj[x][0]+'" id="btn-edit-turma" style="margin-right: 10px;" class="btn btn-success btn-edit-turma"><i class="far fa-edit"></i></a>'+
                                     '<button type="button" class="btn btn-danger btn-exclude-turma"><i class="fas fa-times-circle"></i></button></td></tr>';
                         $("#popularTurmas").html(cols);
                     }
