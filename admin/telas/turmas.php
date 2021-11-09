@@ -48,9 +48,9 @@
                                 </div>
                                 <div class="modal-body message-modal" style="color: black">
                                     <form>
-                                        <div class="form-group descricao-document-div">
-                                            <label for="descricao-document" class="col-form-label">Turma:</label>
-                                            <input type="text" class="form-control descricao-document" id="descricao-document">
+                                        <div class="form-group turma-document-div">
+                                            <label for="turma-document" class="col-form-label">Turma:</label>
+                                            <input type="text" class="form-control turma" id="turma">
                                         </div>
                                     </form>
                                     <br>
@@ -87,7 +87,15 @@
     });
     
     $( ".btn-add-turma").click(function() {
-        //
+        turma = $('.turma').val();
+        $.ajax({
+            url: 'backend/cadastro_turma.php',
+            data: {turma: turma},
+            method: 'POST',
+            success: function(data){
+                 alert(data);
+            }
+        });
     });
 </script>
 
