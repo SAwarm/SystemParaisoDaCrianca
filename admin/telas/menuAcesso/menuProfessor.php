@@ -42,7 +42,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./notas.php">
                             <i class="nc-icon nc-ruler-pencil"></i>
-                            <p>Notas</p>
+                            <p>Avaliação</p>
                         </a>
                     </li>
                     <li class="nav-item">

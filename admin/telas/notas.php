@@ -10,7 +10,8 @@
         }else if ($_SESSION['cargo_user'] == "Professor"){
             include_once("./menuAcesso/menuProfessor.php"); 
         }else if ($_SESSION['cargo_user'] == "Auxiliar"){
-            include_once("./menuAcesso/menuAuxiliar.php"); 
+            include_once('./erro.php');
+            die();
         } ?>
            <div class="col-md-12">
                             <br>
@@ -27,6 +28,7 @@
                                             <th>Id</th>
                                             <th>Nome Aluno</th>
                                             <th>Avaliação</th>
+                                            <th>Opções</th>
                                         </thead>
                                         <tbody>
                                         </tbody>
