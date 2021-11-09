@@ -61,7 +61,32 @@
                                 </div>
                                 </div>
                             </div>
-                        </div>    
+                        </div>
+
+                        <div class="modal fade" id="modal-exclusao" style="background-color: rgba(0,0,0,0.5);" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabe2l">Excluir Turma</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body message-modal" style="color: black">
+                                    <form>
+                                        <div class="form-group turma-document-div">
+                                            <h5 class="modal-title" id="exampleModalLabe2l">Deseja realmente excluir essa turma?</h5>
+                                        </div>
+                                    </form>
+                                    <br>
+                                </div>
+                                <div class="modal-footer">
+                                    <br>
+                                    <button type="button" class="btn btn-danger btn-fill btn-exclude" style="cursor: pointer;">Excluir</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>   
 
 <script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
@@ -104,8 +129,8 @@
                 success: function(data){
                     alert(data);
                     $('#modal-turmas').modal('hide');
-                    popularTableTurmas();
                     $('.turma').val('');
+                    popularTableTurmas();
                 }
             });
         }else{
@@ -116,8 +141,8 @@
                 success: function(data){
                     alert(data);
                     $('#modal-turmas').modal('hide');
-                    popularTableTurmas();
                     $('.turma').val('');
+                    popularTableTurmas();
                 }
             });
         }
@@ -141,6 +166,28 @@
         });
     });
 
+    $(document).on('click','.btn-exclude-turma', function(){
+        $('.turma').val('');
+        $('#modal-exclusao').modal('show');
+
+        id = $(this).attr('data-id');
+        $('.btn-exclude').attr('data-id', id);
+    });
+
+    $(document).on('click','.btn-exclude', function(){
+        id = $(this).attr('data-id');
+        $.ajax({
+            url: 'backend/exclude_turma.php',
+            data: {id: id},
+            method: 'POST',
+            success: function(data){
+                alert(data)
+                $('#modal-exclusao').modal('hide');
+                popularTableTurmas();
+            }
+        });
+    });
+
     function popularTableTurmas(){
         $.ajax({
             url: 'backend/select_turma.php',
@@ -155,7 +202,7 @@
                         cols += '<tr><td scope="row">'+jq_json_obj[x][0]+'</td>';
                         cols += '<td>'+jq_json_obj[x][1]+'</td>';
                         cols += '<td><a type="button" href="#" data-id="'+jq_json_obj[x][0]+'" id="btn-edit-turma" style="margin-right: 10px;" class="btn btn-success btn-edit-turma"><i class="far fa-edit"></i></a>'+
-                                    '<button type="button" class="btn btn-danger btn-exclude-turma"><i class="fas fa-times-circle"></i></button></td></tr>';
+                                    '<a type="button" href="#" data-id="'+jq_json_obj[x][0]+'" class="btn btn-danger btn-exclude-turma"><i class="fas fa-times-circle"></i></a></td></tr>';
                         $("#popularTurmas").html(cols);
                     }
                  }else{
