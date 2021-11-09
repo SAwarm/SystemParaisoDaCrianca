@@ -401,7 +401,6 @@
         data.append('numero_casa', numero_casa);
         data.append('complemento', complemento);
         
-
         jQuery.ajax({
             url: 'backend/cadastro_funcionario.php',
             data: data,
