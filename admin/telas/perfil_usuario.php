@@ -73,7 +73,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                        <button type="submit" class="btn btn-primary btn-fill pull-right">Update Profile</button>
                                         <div class="clearfix"></div>
                                     </form>
                                 </div>
@@ -88,7 +88,7 @@
                                     <div class="author">
                                         <a href="#">
                                             <img class="avatar border-gray" src="../assets/img/faces/face-3.jpg" alt="...">
-                                            <h5 class="title">Mike Andrew</h5>
+                                            <h5 class="title text-primary" >Mike Andrew</h5>
                                         </a>
                                         <p class="description">
                                             michael24
@@ -100,58 +100,11 @@
                                         <br> I'm in that two seat Lambo"
                                     </p>
                                 </div>
-                                <hr>
-                                <div class="button-container mr-auto ml-auto">
-                                    <button href="#" class="btn btn-simple btn-link btn-icon">
-                                        <i class="fa fa-facebook-square"></i>
-                                    </button>
-                                    <button href="#" class="btn btn-simple btn-link btn-icon">
-                                        <i class="fa fa-twitter"></i>
-                                    </button>
-                                    <button href="#" class="btn btn-simple btn-link btn-icon">
-                                        <i class="fa fa-google-plus-square"></i>
-                                    </button>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <footer class="footer">
-                <div class="container-fluid">
-                    <nav>
-                        <ul class="footer-menu">
-                            <li>
-                                <a href="#">
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Company
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Portfolio
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Blog
-                                </a>
-                            </li>
-                        </ul>
-                        <p class="copyright text-center">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script>
-                            <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                        </p>
-                    </nav>
-                </div>
-            </footer>
         </div>
     </div>
 </body>

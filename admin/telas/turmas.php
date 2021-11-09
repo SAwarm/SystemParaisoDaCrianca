@@ -28,6 +28,7 @@
                                         <thead>
                                             <th>Id</th>
                                             <th>Turma</th>
+                                            <th>Opções</th>
                                         </thead>
                                         <tbody>
                                         </tbody>
