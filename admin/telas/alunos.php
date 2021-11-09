@@ -42,11 +42,11 @@
                             </div>
                         </div>
 
-<div class="modal fade" id="modal-users" style="margin-top: -500px; overflow-y:auto;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-aluno" style="margin-top: -400px; overflow-y:auto;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cadastro Novo Usuário</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cadastro Novo Aluno</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -56,19 +56,6 @@
             <div class="form-group nome-user-div">
                 <label for="nome-user" class="col-form-label">Nome:</label>
                 <input type="text" class="form-control nome-user" id="nome-user">
-            </div>
-            <div class="form-group function-user-div">  
-                <label for="message-text" class="col-form-label">Função</label>
-                <select type="date" class="form-control function-user" id="message-text function-user">
-                    <option value="Coordenador(a)">Coordenador(a)</option>
-                    <option value="Professor(a)">Professor(a)</option>
-                    <option value="Auxiliar">Auxiliar</option>
-                    <option value="Responsável">Responsável</option>
-                </select>
-            </div>
-            <div class="form-group date-email-div">
-                <label for="message-text" class="col-form-label">Email:</label>
-                <input type="text" class="form-control date-email" id="message-text date-email"></input>
             </div>
             <div class="form-group date-nasc-div">  
                 <label for="message-text" class="col-form-label">Data de Nascimento:</label>
@@ -90,10 +77,6 @@
                 <label for="message-text" class="col-form-label">Foto:</label>
                 <input type="file" class="form-control file-user" id="message-text file-user"></input>
             </div>
-            <div class="form-group observation-user-div">  
-                <label for="message-text" class="col-form-label">Observação:</label>
-                <textarea type="textarea" class="form-control observation-user" id="message-text observation-user"></textarea>
-            </div>
             <div class="form-group btn-add-document-div">  
                 <label for="message-text" class="col-form-label">Documento:</label>
                 <a type="button" href="#" class="btn btn-primary btn-fill btn-add-document" style="margin-right: 62.5%;">Adicionar Documento</a>                
@@ -102,13 +85,9 @@
                 <label for="message-text" class="col-form-label">Endereço:</label>
                 <a type="button" href="#" class="btn btn-primary btn-fill btn-add-address" style="margin-right: 62.5%;">Adicionar Endereço</a>                
             </div>
-            <div class="form-group date-carga-div">
-                <label for="message-text" class="col-form-label">Carga em horas:</label>
-                <input type="number" class="form-control date-carga" id="message-text date-carga"></input>
-            </div>
             <div class="form-group date-formacao-div">
-                <label for="message-text" class="col-form-label">Formação:</label>
-                <input type="text" class="form-control date-formacao" id="message-text date-formacao"></input>
+                <label for="message-text" class="col-form-label">Medicamento:</label>
+                <input type="text" class="form-control date-medicamento" id="message-text date-medicamento"></input>
             </div>
             <div class="form-group restricoes-div">
                 <label for="message-text" class="col-form-label">Restrições alimentares:</label>
@@ -132,7 +111,7 @@
                 </select>
             </div>
             <div class="form-group senha-div">
-                <label for="message-text" class="col-form-label">Formação:</label>
+                <label for="message-text" class="col-form-label">Senha:</label>
                 <input type="text" class="form-control date-senha" id="message-text date-senha"></input>
             </div>
         </form>
@@ -140,111 +119,91 @@
       </div>
       <div class="modal-footer">
           <br>
-        <button type="button" class="btn btn-primary btn-fill btn-send-users" style="cursor: pointer;" data-dismiss="modal">Enviar</button>
+        <button type="button" class="btn btn-primary btn-fill btn-send-aluno" style="cursor: pointer;" data-dismiss="modal">Enviar</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="modal-aluno" style="margin-top: -500px; overflow-y:auto;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-document" style="background-color: rgba(0,0,0,0.5);" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cadastro Novo Alunno</h5>
+        <h5 class="modal-title" id="exampleModalLabe2l">Cadastro Novo Documento</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body message-modal" style="color: black">
         <form>
-            <div class="form-group nome-user-div">
-                <label for="nome-user" class="col-form-label">Nome:</label>
-                <input type="text" class="form-control nome-user" id="nome-user">
+            <div class="form-group descricao-document-div">
+                <label for="descricao-document" class="col-form-label">Descrição:</label>
+                <input type="text" class="form-control descricao-document" id="descricao-document">
             </div>
-            <div class="form-group function-user-div">  
-                <label for="message-text" class="col-form-label">Função</label>
-                <select type="date" class="form-control function-user" id="message-text function-user">
-                    <option value="Coordenador(a)">Coordenador(a)</option>
-                    <option value="Professor(a)">Professor(a)</option>
-                    <option value="Auxiliar">Auxiliar</option>
-                    <option value="Responsável">Responsável</option>
-                </select>
+            <div class="form-group cpf-document-div">
+                <label for="message-text" class="col-form-label">CPF:</label>
+                <input type="number" class="form-control cpf-document" id="message-text cpf-document"></input>
             </div>
-            <div class="form-group date-email-div">
-                <label for="message-text" class="col-form-label">Email:</label>
-                <input type="text" class="form-control date-email" id="message-text date-email"></input>
-            </div>
-            <div class="form-group date-nasc-div">  
-                <label for="message-text" class="col-form-label">Data de Nascimento:</label>
-                <input type="date" class="form-control date-nasc" id="message-text date-nasc"></input>
-            </div>
-            <div class="form-group date-ingresso-div">  
-                <label for="message-text" class="col-form-label">Data Ingresso:</label>
-                <input type="date" class="form-control date-ingresso" id="message-text date-ingresso"></input>
-            </div>
-            <div class="form-group genero-user-div">  
-                <label for="message-text" class="col-form-label">Gênero:</label>
-                <select type="date" class="form-control genero-user" id="message-text genero-user">
-                    <option value="Masculino">Masculino</option>
-                    <option value="Feminino">Feminino</option>
-                    <option value="Outros">Outros</option>
-                </select>
-            </div>
-            <div class="form-group file-user-div">  
-                <label for="message-text" class="col-form-label">Foto:</label>
-                <input type="file" class="form-control file-user" id="message-text file-user"></input>
-            </div>
-            <div class="form-group observation-user-div">  
-                <label for="message-text" class="col-form-label">Observação:</label>
-                <textarea type="textarea" class="form-control observation-user" id="message-text observation-user"></textarea>
-            </div>
-            <div class="form-group btn-add-document-div">  
-                <label for="message-text" class="col-form-label">Documento:</label>
-                <a type="button" href="#" class="btn btn-primary btn-fill btn-add-document" style="margin-right: 62.5%;">Adicionar Documento</a>                
-            </div>
-            <div class="form-group btn-add-address-div">  
-                <label for="message-text" class="col-form-label">Endereço:</label>
-                <a type="button" href="#" class="btn btn-primary btn-fill btn-add-address" style="margin-right: 62.5%;">Adicionar Endereço</a>                
-            </div>
-            <div class="form-group date-carga-div">
-                <label for="message-text" class="col-form-label">Carga em horas:</label>
-                <input type="number" class="form-control date-carga" id="message-text date-carga"></input>
-            </div>
-            <div class="form-group date-formacao-div">
-                <label for="message-text" class="col-form-label">Formação:</label>
-                <input type="text" class="form-control date-formacao" id="message-text date-formacao"></input>
-            </div>
-            <div class="form-group restricoes-div">
-                <label for="message-text" class="col-form-label">Restrições alimentares:</label>
-                <textarea type="textarea" class="form-control restricoes-user" id="message-text restricoes-user"></textarea>
-            </div>
-            <div class="form-group doencas-div">
-                <label for="message-text" class="col-form-label">Doenças:</label>
-                <textarea type="textarea" class="form-control doencas-user" id="message-text doencas-user"></textarea>
-            </div>
-            <div class="form-group tipo-sanguineo-div">  
-                <label for="message-text" class="col-form-label">Tipo sanguíneo:</label>
-                <select type="date" class="form-control tipo-sanguineo" id="message-text tipo-sanguineo">
-                    <option value="a_positivo">A+</option>
-                    <option value="a_negativo">A-</option>
-                    <option value="b_positivo">B+</option>
-                    <option value="b_negativo">B-</option>
-                    <option value="ab_positivo">AB+</option>
-                    <option value="ab_negativo">AB-</option>
-                    <option value="o_positivo">O+</option>
-                    <option value="o_negativo">O-</option>
-                </select>
-            </div>
-            <div class="form-group senha-div">
-                <label for="message-text" class="col-form-label">Formação:</label>
-                <input type="text" class="form-control date-senha" id="message-text date-senha"></input>
+            <div class="form-group rg-document-div">  
+                <label for="message-text" class="col-form-label">RG:</label>
+                <input type="number" class="form-control rg-document" id="message-text rg-document"></input>
             </div>
         </form>
         <br>
       </div>
       <div class="modal-footer">
           <br>
-        <button type="button" class="btn btn-primary btn-fill btn-send-users" style="cursor: pointer;" data-dismiss="modal">Enviar</button>
+        <button type="button" class="btn btn-primary btn-fill btn-document" style="cursor: pointer;">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-address" style="margin-top: -100px; overflow-y:auto; background-color: rgba(0,0,0,0.5);" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabe2l">Cadastro Novo Endereço</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body message-modal" style="color: black">
+        <form>
+             <div class="form-group estado-user-div">  
+                <label for="message-text" class="col-form-label">Estado:</label>
+                <select type="date" class="form-control estado-user" id="message-text estado-user">
+                    <option value="sc">SC</option>
+                    <option value="pr">PR</option>
+                    <option value="rs">RS</option>
+                </select>
+            </div>
+            <div class="form-group municipio-div">
+                <label for="descricao-document" class="col-form-label">Município:</label>
+                <input type="text" class="form-control municipio" id="municipio">
+            </div>
+            <div class="form-group bairro-div">
+                <label for="message-text" class="col-form-label">Bairro:</label>
+                <input type="text" class="form-control bairro" id="message-text bairro"></input>
+            </div>
+            <div class="form-group rua-div">  
+                <label for="message-text" class="col-form-label">Rua:</label>
+                <input type="text" class="form-control rua" id="message-text rua"></input>
+            </div>
+            <div class="form-group numero-div">  
+                <label for="message-text" class="col-form-label">Número:</label>
+                <input type="number" class="form-control numero-casa" id="message-text numero-casa"></input>
+            </div>
+            <div class="form-group complemento-div">  
+                <label for="message-text" class="col-form-label">Complemento:</label>
+                <input type="text" class="form-control complemento" id="message-text complemento"></input>
+            </div>
+        </form>
+        <br>
+      </div>
+      <div class="modal-footer">
+          <br>
+        <button type="button" class="btn btn-primary btn-fill btn-address" style="cursor: pointer;">Salvar</button>
       </div>
     </div>
   </div>
@@ -279,6 +238,140 @@
     $( ".btn-add-turma").click(function() {
         //
     });
+
+    $(".btn-add-document").click(function(){
+        $('#modal-document').modal('show');
+    })
+
+    $(".btn-add-address").click(function(){
+        $('#modal-address').modal('show');
+    })
+
+    $(".btn-document").click(function(){
+        if($('.descricao-document').val() == "" || $('.cpf-document').val() == "" || $('.rg-document').val() == ""){
+            alert("Digite os valores dos campos");  
+        }
+        
+    })
+
+    $( ".btn-send-aluno" ).click(function(event) {
+        nome = $('.nome-user').val();
+        data_nasc = $('.date-nasc').val();
+        data_ingresso = $('.date-ingresso').val();
+        file = $('.file-user').val();
+        descricao = $('.descricao-document').val();
+        cpf = $('.cpf-document').val();
+        rg = $('.rg-document').val();
+        medicamento = $('.date-medicamento').val();
+        restricoes = $('.restricoes-user').val();
+        doencas = $('.doencas-user').val();
+        tipo_sang = $('.tipo-sanguineo').val();
+        genero = $('.genero-user').val();
+        estado = $('.estado-user').val();
+        municipio = $('.municipio').val();
+        bairro = $('.bairro').val();
+        rua = $('.rua').val();
+        numero_casa = $('.numero-casa').val();
+        complemento =$('.complemento').val();
+        msg = "";
+
+        /*if(nome == ""){
+            msg += "Nome";
+        }
+        if(email == ""){
+           msg += " Email";
+        }
+        if(data_nasc == ""){
+            msg += " Data nascimento";
+        }
+        if(data_ingresso == ""){
+            msg += " Data ingresso";
+        }
+        if(file == ""){
+            msg += " Foto";
+        }
+        if(observacao == ""){
+            msg += " Observação";
+        }
+        if(descricao == ""){
+            msg += " Descrição";
+        }
+        if(cpf == ""){
+            msg += " CPF";
+        }
+        if(rg == ""){
+            msg += " RG";
+        }
+        if(carga == ""){
+            msg += " Carga";
+        }
+        if(formacao == ""){
+            msg += " Formação";
+        }
+        if(restricoes == ""){
+            msg += " Restrições alimentares";
+        }
+        if(doencas == ""){
+            msg += " Doenças";
+        }
+        if(tipo_sang == ""){
+            msg += " Tipo sanguíneo";
+        }
+        if(estado == ""){
+            msg += " Estado";
+        }
+        if(municipio == ""){
+            msg += " Município";
+        }
+        if(bairro == ""){
+            msg += " Bairro";
+        }
+        if(rua == ""){
+            msg += " Rua";
+        }
+
+        if(msg != ""){
+            alert("Digite os campos de: "+ msg);
+            event.preventDefault();
+        }*/
+
+        var data = new FormData();
+            jQuery.each(jQuery('.file-user')[0].files, function(i, file) {
+            data.append('file-'+i, file);
+        });
+
+        data.append('nome', nome);
+        data.append('email', email);
+        data.append('data_nasc', data_nasc);
+        data.append('data_ingresso', data_ingresso);
+        data.append('descricao', descricao);
+        data.append('cpf', cpf);
+        data.append('rg', rg);
+        data.append('medicamento', medicamento);
+        data.append('restricoes', restricoes);
+        data.append('doencas', doencas);
+        data.append('tipo_sang', tipo_sang);
+        data.append('genero', genero);
+        data.append('estado', estado);
+        data.append('municipio', municipio);
+        data.append('bairro', bairro);
+        data.append('rua', rua);
+        data.append('numero_casa', numero_casa);
+        data.append('complemento', complemento);
+        
+        jQuery.ajax({
+            url: 'backend/cadastro_alunos.php',
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            method: 'POST',
+            type: 'POST', // For jQuery < 1.9
+            success: function(data){
+                // alert(data);
+            }
+        });
+    })
 </script>
 
 <?php } else{
