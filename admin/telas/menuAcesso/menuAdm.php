@@ -88,7 +88,7 @@
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
+                                <a class="nav-link" href="./backend/logout.php">
                                     <span class="no-icon">Sair</span>
                                 </a>
                             </li>
