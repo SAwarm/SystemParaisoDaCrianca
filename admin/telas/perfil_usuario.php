@@ -8,12 +8,10 @@
     } else if ($_SESSION['cargo_user'] == "Coordenador"){
         include_once("./menuAcesso/menuCoordenador.php"); 
     }else if ($_SESSION['cargo_user'] == "Professor"){
-        include_once('./erro.php');
-        die();
+        include_once("./menuAcesso/menuProfessor.php");
     }else if ($_SESSION['cargo_user'] == "Auxiliar"){
-        include_once('./erro.php');
-        die();
-    } ?>   
+        include_once("./menuAcesso/menuAuxiliar.php"); 
+    } ?>
 
             <div class="content">
                 <div class="container-fluid">
