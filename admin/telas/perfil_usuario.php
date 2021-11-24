@@ -136,13 +136,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Doenças pré-definidas</label>
-                                                    <textarea style="height: 100px;" rows="4" cols="80" class="form-control" placeholder="Observação" value="">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                                    <textarea style="height: 100px;" rows="4" cols="80" class="form-control" placeholder="Observação" value=""></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Restrições alimentares</label>
-                                                    <textarea style="height: 100px;" rows="4" cols="80" class="form-control" placeholder="Observação" value="">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                                    <textarea style="height: 100px;" rows="4" cols="80" class="form-control" placeholder="Observação" value=""></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -150,7 +150,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Observação</label>
-                                                    <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                                    <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -162,7 +162,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-fill pull-right">Update Profile</button>
+                                        <button type="submit" class="btn btn-primary btn-fill pull-right">Atualizar Informações</button>
                                         <div class="clearfix"></div>
                                     </form>
                                 </div>
@@ -177,16 +177,14 @@
                                     <div class="author">
                                         <a href="#">
                                             <img class="avatar border-gray" src="../assets/img/faces/face-3.jpg" alt="...">
-                                            <h5 class="title text-primary" >Mike Andrew</h5>
+                                            <h5 class="title text-primary" >Usuário Teste</h5>
                                         </a>
                                         <p class="description">
-                                            michael24
+                                            usuario10
                                         </p>
                                     </div>
                                     <p class="description text-center">
-                                        "Lamborghini Mercy
-                                        <br> Your chick she so thirsty
-                                        <br> I'm in that two seat Lambo"
+                                        "Descrição"
                                     </p>
                                 </div>
                             </div>
