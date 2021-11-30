@@ -63,54 +63,54 @@
         $tipo_sang = 8;
     }
 
-    function CadastroDocument($descricao, $cpf, $rg){
+    function CadastroDocument($connection, $descricao, $cpf, $rg){
         $queryInsert = "INSERT INTO doctos (descricao, cpf, rg) VALUES ($descricao, $cpf, $rg)";
 
         $result = mysqli_query($connection, $queryInsert);
         return mysqli_insert_id();
    }
 
-   function CadastroAddress($estado, $municipio, $bairro, $rua, $numero_casa, $complemento){
+   function CadastroAddress($connection, $estado, $municipio, $bairro, $rua, $numero_casa, $complemento){
         $queryInsert = "INSERT INTO endereco (estado, municipio, bairro, rua, numero, complemento) VALUES ($estado, $municipio, $bairro, $rua, $numero_casa, $complemento)";
 
         $result = mysqli_query($connection, $queryInsert);
         return mysqli_insert_id();
    }
 
-   function CadastroCarga($carga){
+   function CadastroCarga($connection, $carga){
         $queryInsert = "INSERT INTO cargah (descricao) VALUES ($carga)";
 
         $result = mysqli_query($connection, $queryInsert);
         return mysqli_insert_id();
    }
 
-   function CadastroFormacao($formacao){
+   function CadastroFormacao($connection, $formacao){
         $queryInsert = "INSERT INTO formacao (descricao) VALUES ($formacao)";
 
         $result = mysqli_query($connection, $queryInsert);
         return mysqli_insert_id();
    }
 
-    function CadastroRestAlimentar($restricoes){
+    function CadastroRestAlimentar($connection, $restricoes){
         $queryInsert = "INSERT INTO restalimentar (descricao) VALUES ($restricoes)";
 
-        $result = mysqli_query($connection, $queryInsert);
+        $result = mysqli_query($connection, $connection, $queryInsert);
         return mysqli_insert_id();
     }
 
-    function CadastroDoencas($doencas){
+    function CadastroDoencas($connection, $doencas){
         $queryInsert = "INSERT INTO doencaspre (descricao) VALUES ($doencas)";
 
         $result = mysqli_query($connection, $queryInsert);
         return mysqli_insert_id();
     }
 
-    $doctos = CadastroDocument($descricao, $cpf, $rg);
-    $endereco = CadastroAddress($estado, $municipio, $bairro, $rua, $numero_casa, $complemento);
-    $cargah =  CadastroCarga($carga);
-    $formacaoFunc = CadastroFormacao($formacao);
-    $restAlim = CadastroRestAlimentar($restricoes);
-    $doenc = CadastroDoencas($doencas);
+    $doctos = CadastroDocument($connection, $descricao, $cpf, $rg);
+    $endereco = CadastroAddress($connection, $estado, $municipio, $bairro, $rua, $numero_casa, $complemento);
+    $cargah =  CadastroCarga($connection, $carga);
+    $formacaoFunc = CadastroFormacao($connection, $formacao);
+    $restAlim = CadastroRestAlimentar($connection, $restricoes);
+    $doenc = CadastroDoencas($connection, $doencas);
 
     $senha = $funcao.$nome.$data_nasc.$formacao.$genero;
 
