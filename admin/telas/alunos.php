@@ -371,7 +371,11 @@
             method: 'POST',
             type: 'POST', // For jQuery < 1.9
             success: function(data){
-                // alert(data);
+                if(data == "true"){
+                    alert("Salvo com sucesso!")
+                }else if(data == "false"){
+                    alert("Erro ao salvar aluno!")
+                }
             }
         });
     })
