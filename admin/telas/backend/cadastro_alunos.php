@@ -124,7 +124,7 @@
         )";
 
         if(mysqli_query($connection, $queryInsert)){
-            "true";
+            echo "true";
         }else{
             echo "false";
         }
