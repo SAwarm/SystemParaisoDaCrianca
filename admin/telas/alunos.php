@@ -12,8 +12,7 @@
         }else if ($_SESSION['cargo_user'] == "Auxiliar"){
             include_once('./erro.php');
             die();
-        } ?> 
-            
+        } ?>
 
             <div class="col-md-12">
                             <br>
@@ -346,7 +345,6 @@
         });
 
         data.append('nome', nome);
-        data.append('email', email);
         data.append('data_nasc', data_nasc);
         data.append('data_ingresso', data_ingresso);
         data.append('descricao', descricao);
