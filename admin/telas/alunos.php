@@ -426,9 +426,13 @@
             data: {id: id},
             method: 'POST',
             success: function(data){
-                alert(data)
-                $('#modal-exclusao').modal('hide');
-                popularTableTurmas();
+                if(data == "true"){
+                    alert("Excluído com sucesso!");
+                    $('#modal-exclusao').modal('hide');
+                    reloadTable()
+                }else{
+                    alert("Erro "+data);
+                }
             }
         });
     });
