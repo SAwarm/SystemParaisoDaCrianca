@@ -33,7 +33,7 @@
                                             <th>Email Responsável</th>
                                             <th>Opções</th>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="tableAluno">
                                         </tbody>
                                     </table>
                                 </div>
@@ -234,7 +234,12 @@
 
 </html>
 
-<script>    
+<script>   
+
+    $( document ).ready(function() {
+        reloadTable();
+    });
+
     $( ".btn-add-user" ).click(function() {
         $('#modal-aluno').modal('show');
     });
@@ -373,12 +378,40 @@
             success: function(data){
                 if(data == "true"){
                     alert("Salvo com sucesso!")
+                    reloadTable()
                 }else if(data == "false"){
                     alert("Erro ao salvar aluno!")
                 }
             }
         });
     })
+
+    function reloadTable(){
+        $.ajax({
+            url: 'backend/select_alunos_table.php',
+            data: {},
+            method: 'POST',
+            success: function(data){
+                if(data != "null"){
+                    jq_json_obj = $.parseJSON(data);
+                    cont = jq_json_obj.length;
+                    cols = "";
+                    for(x = 0; x < cont; x++){
+                        cols += "<tr><td>"+jq_json_obj[x]['cod']+"</td>"+
+                        "<td>"+jq_json_obj[x][1]+"</td>" +
+                        "<td>"+jq_json_obj[x]['descricao']+"</td>" +
+                        "<td>"+jq_json_obj[x]['nome']+"</td>" +
+                        "<td>"+jq_json_obj[x]['email']+"</td>" +
+                        '<td><a type="button" href="#" data-id="'+jq_json_obj[x][0]+'" id="btn-edit-aluno" style="margin-right: 10px;" class="btn btn-success btn-edit-turma"><i class="far fa-edit"></i></a>'+
+                        '<a type="button" href="#" data-id="'+jq_json_obj[x][0]+'" class="btn btn-danger btn-exclude-aluno"><i class="fas fa-times-circle"></i></a></td></tr>';
+                    }
+                    $('.tableAluno').html(cols);
+                }else{
+
+                }
+            }
+        });
+    }
 </script>
 
 <?php } else{
