@@ -123,7 +123,7 @@
       </div>
       <div class="modal-footer">
           <br>
-        <button type="button" class="btn btn-primary btn-fill btn-send-aluno" style="cursor: pointer;" data-dismiss="modal">Enviar</button>
+        <button type="button" class="btn btn-primary btn-fill btn-send-aluno" data-id="" style="cursor: pointer;" data-dismiss="modal">Enviar</button>
       </div>
     </div>
   </div>
@@ -391,25 +391,81 @@
         data.append('rua', rua);
         data.append('numero_casa', numero_casa);
         data.append('complemento', complemento);
-        
-        jQuery.ajax({
-            url: 'backend/cadastro_alunos.php',
-            data: data,
-            cache: false,
-            contentType: false,
-            processData: false,
-            method: 'POST',
-            type: 'POST', // For jQuery < 1.9
-            success: function(data){
-                if(data == "true"){
-                    alert("Salvo com sucesso!")
-                    reloadTable()
-                }else if(data == "false"){
-                    alert("Erro ao salvar aluno!")
+
+        if($(this).attr('data-id') != ""){
+            jQuery.ajax({
+                url: 'backend/update_aluno.php',
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                method: 'POST',
+                type: 'POST', // For jQuery < 1.9
+                success: function(data){
+                    if(data == "true"){
+                        alert("Salvo com sucesso!")
+                        reloadTable()
+                    }else if(data == "false"){
+                        alert("Erro ao salvar aluno!")
+                    }
                 }
+            });
+        }else{
+            jQuery.ajax({
+                url: 'backend/cadastro_alunos.php',
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                method: 'POST',
+                type: 'POST', // For jQuery < 1.9
+                success: function(data){
+                    if(data == "true"){
+                        alert("Salvo com sucesso!")
+                        reloadTable()
+                    }else if(data == "false"){
+                        alert("Erro ao salvar aluno!")
+                    }
+                }
+            });
+        }
+    })
+
+    $(document).on('click','#btn-edit-aluno', function(){
+        $('.turma').val('');
+        id = $(this).attr('data-id');
+        $('.btn-send-aluno').attr('data-id', id);
+        $.ajax({
+            url: 'backend/select_aluno_edit.php',
+            data: {id: id, },
+            method: 'POST',
+            success: function(data){
+                jq_json_obj = $.parseJSON(data);
+                $('#modal-aluno').modal('show');
+                //console.log()
+                $('.nome-user').val();
+                $('.date-nasc').val();
+                $('.date-ingresso').val();
+                $('.file-user').val();
+                $('.descricao-document').val();
+                $('.cpf-document').val();
+                $('.rg-document').val();
+                $('.date-medicamento').val();
+                $('.restricoes-user').val();
+                $('.doencas-user').val();
+                $('.tipo-sanguineo').val();
+                $('.genero-user').val();
+                $('.estado-user').val();
+                $('.municipio').val();
+                $('.bairro').val();
+                $('.rua').val();
+                $('.numero-casa').val();
+                $('.complemento').val();
+
+                $('#modal-aluno').html('Editando Aluno');
             }
         });
-    })
+    });
 
     $(document).on('click','.btn-exclude-aluno', function(){
         $('.turma').val('');
