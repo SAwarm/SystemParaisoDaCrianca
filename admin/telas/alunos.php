@@ -40,7 +40,7 @@
                             </div>
                         </div>
 
-<div class="modal fade" id="modal-aluno" style="margin-top: -400px; overflow-y:auto;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-aluno" style="margin-top: -400px; " tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -71,12 +71,6 @@
                     <option value="Outros">Outros</option>
                 </select>
             </div>
-            <div class="form-group turma-user-div">  
-                <label for="message-text" class="col-form-label">Gênero:</label>
-                <select type="date" class="form-control genero-user" id="message-text genero-user">
-                    <option value="1B">teste</option>
-                </select>
-            </div>
             <div class="form-group file-user-div">  
                 <label for="message-text" class="col-form-label">Foto:</label>
                 <input type="file" class="form-control file-user" id="message-text file-user"></input>
@@ -104,14 +98,14 @@
             <div class="form-group tipo-sanguineo-div">  
                 <label for="message-text" class="col-form-label">Tipo sanguíneo:</label>
                 <select type="date" class="form-control tipo-sanguineo" id="message-text tipo-sanguineo">
-                    <option value="a_positivo">A+</option>
-                    <option value="a_negativo">A-</option>
-                    <option value="b_positivo">B+</option>
-                    <option value="b_negativo">B-</option>
-                    <option value="ab_positivo">AB+</option>
-                    <option value="ab_negativo">AB-</option>
-                    <option value="o_positivo">O+</option>
-                    <option value="o_negativo">O-</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
                 </select>
             </div>
             <div class="form-group senha-div">
@@ -177,9 +171,9 @@
              <div class="form-group estado-user-div">  
                 <label for="message-text" class="col-form-label">Estado:</label>
                 <select type="date" class="form-control estado-user" id="message-text estado-user">
-                    <option value="sc">SC</option>
-                    <option value="pr">PR</option>
-                    <option value="rs">RS</option>
+                    <option value="SC">SC</option>
+                    <option value="PR">PR</option>
+                    <option value="RS">RS</option>
                 </select>
             </div>
             <div class="form-group municipio-div">
@@ -443,26 +437,33 @@
                 jq_json_obj = $.parseJSON(data);
                 $('#modal-aluno').modal('show');
                 //console.log()
-                $('.nome-user').val();
-                $('.date-nasc').val();
-                $('.date-ingresso').val();
-                $('.file-user').val();
-                $('.descricao-document').val();
-                $('.cpf-document').val();
-                $('.rg-document').val();
-                $('.date-medicamento').val();
-                $('.restricoes-user').val();
-                $('.doencas-user').val();
-                $('.tipo-sanguineo').val();
-                $('.genero-user').val();
-                $('.estado-user').val();
-                $('.municipio').val();
-                $('.bairro').val();
-                $('.rua').val();
-                $('.numero-casa').val();
-                $('.complemento').val();
+                $('.nome-user').val(jq_json_obj[0][1]);
+                $('.date-nasc').val(jq_json_obj[0]['datanasc']);
+                $('.date-ingresso').val(jq_json_obj[0]['datadeingresso']);
+                //$('.file-user').val(jq_json_obj[0]);
+                $('.descricao-document').val(jq_json_obj[0][16]);
+                $('.cpf-document').val(jq_json_obj[0]['CPF']);
+                $('.rg-document').val(jq_json_obj[0]['RG']);
+                $('.date-medicamento').val(jq_json_obj[0]['medicamento']);
+                $('.restricoes-user').val(jq_json_obj[0][31]);
+                if(jq_json_obj[0]['genero'] == "1"){
+                    $('.genero-user').val("Masculino");
+                }else if(jq_json_obj[0]['genero'] == "2"){
+                    $('.genero-user').val("Feminino");
+                }else{
+                    $('.genero-user').val("Outros");
+                }
+                $('.doencas-user').val(jq_json_obj[0]['descricao']);
+                $('.tipo-sanguineo').val(jq_json_obj[0][22]);
+                
+                $('.estado-user').val(jq_json_obj[0]['estado']);
+                $('.municipio').val(jq_json_obj[0]['municipio']);
+                $('.bairro').val(jq_json_obj[0]['bairro']);
+                $('.rua').val(jq_json_obj[0]['rua']);
+                $('.numero-casa').val(jq_json_obj[0]['numero']);
+                $('.complemento').val(jq_json_obj[0]['complemento']);
 
-                $('#modal-aluno').html('Editando Aluno');
+                $('#exampleModalLabel').html('Editando Aluno');
             }
         });
     });
