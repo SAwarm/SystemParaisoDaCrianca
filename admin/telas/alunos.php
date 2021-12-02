@@ -213,6 +213,31 @@
   </div>
 </div>
 
+<div class="modal fade" id="modal-exclusao" style="background-color: rgba(0,0,0,0.5);" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabe2l">Excluir Turma</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body message-modal" style="color: black">
+                                    <form>
+                                        <div class="form-group turma-document-div">
+                                            <h5 class="modal-title" id="exampleModalLabe2l">Deseja realmente excluir essa aluno?</h5>
+                                        </div>
+                                    </form>
+                                    <br>
+                                </div>
+                                <div class="modal-footer">
+                                    <br>
+                                    <button type="button" class="btn btn-danger btn-fill btn-exclude" style="cursor: pointer;">Excluir</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>   
+
 
 </body>
 <!--   Core JS Files   -->
@@ -385,6 +410,28 @@
             }
         });
     })
+
+    $(document).on('click','.btn-exclude-aluno', function(){
+        $('.turma').val('');
+        $('#modal-exclusao').modal('show');
+
+        id = $(this).attr('data-id');
+        $('.btn-exclude').attr('data-id', id);
+    });
+
+    $(document).on('click','.btn-exclude', function(){
+        id = $(this).attr('data-id');
+        $.ajax({
+            url: 'backend/exclude_aluno.php',
+            data: {id: id},
+            method: 'POST',
+            success: function(data){
+                alert(data)
+                $('#modal-exclusao').modal('hide');
+                popularTableTurmas();
+            }
+        });
+    });
 
     function reloadTable(){
         $.ajax({
