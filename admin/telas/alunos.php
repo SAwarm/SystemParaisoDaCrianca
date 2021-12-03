@@ -387,6 +387,12 @@
         data.append('complemento', complemento);
 
         if($(this).attr('data-id') != ""){
+            data.append('id_aluno', $(this).attr('data-id'));
+            data.append('id_doctos', doctos);
+            data.append('id_endereco', endereco);
+            data.append('id_restalimentar', restAlim);
+            data.append('id_doencas', doenc);
+
             jQuery.ajax({
                 url: 'backend/update_aluno.php',
                 data: data,
@@ -424,6 +430,11 @@
             });
         }
     })
+    var turma = 0;
+    var doctos = 0;
+    var endereco = 0;
+    var restAlim = 0;
+    var doenc = 0;
 
     $(document).on('click','#btn-edit-aluno', function(){
         $('.turma').val('');
@@ -431,7 +442,7 @@
         $('.btn-send-aluno').attr('data-id', id);
         $.ajax({
             url: 'backend/select_aluno_edit.php',
-            data: {id: id, },
+            data: {id: id},
             method: 'POST',
             success: function(data){
                 jq_json_obj = $.parseJSON(data);
@@ -464,6 +475,13 @@
                 $('.complemento').val(jq_json_obj[0]['complemento']);
 
                 $('#exampleModalLabel').html('Editando Aluno');
+                $('.btn-send-aluno').attr('data-id', id)
+
+                turma = jq_json_obj[0]['turma'];
+                doctos = jq_json_obj[0]['doctos'];
+                endereco = jq_json_obj[0]['endereco'];
+                restAlim = jq_json_obj[0]['restalimentar'];
+                doenc = jq_json_obj[0]['doencaspre'];
             }
         });
     });

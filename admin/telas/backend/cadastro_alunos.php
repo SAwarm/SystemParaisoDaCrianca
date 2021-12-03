@@ -29,21 +29,21 @@
         $genero = 3;
     }
 
-    if($tipo_sang == "a_positivo"){
+    if($tipo_sang == "A+"){
         $tipo_sang = 1;
-    }else if($tipo_sang == "a_negativo"){
+    }else if($tipo_sang == "A-"){
         $tipo_sang = 2;
-    }else if($tipo_sang == "b_positivo"){
+    }else if($tipo_sang == "B+"){
         $tipo_sang = 3;
-    }else if($tipo_sang == "b_negativo"){
+    }else if($tipo_sang == "B-"){
         $tipo_sang = 4;
-    }else if($tipo_sang == "ab_positivo"){
+    }else if($tipo_sang == "AB+"){
         $tipo_sang = 5;
-    }else if($tipo_sang == "ab_negativo"){
+    }else if($tipo_sang == "AB-"){
         $tipo_sang = 6;
-    }else if($tipo_sang == "o_positivo"){
+    }else if($tipo_sang == "O+"){
         $tipo_sang = 7;
-    }else if($tipo_sang == "o_negativo"){
+    }else if($tipo_sang == "O-"){
         $tipo_sang = 8;
     }
 
