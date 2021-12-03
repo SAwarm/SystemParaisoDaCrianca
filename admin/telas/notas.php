@@ -30,7 +30,7 @@
                                             <th>Avaliação</th>
                                             <th>Opções</th>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="tableNotas">
                                         </tbody>
                                     </table>
                                 </div>
@@ -87,6 +87,26 @@
 </html>
 
 <script>
+    $( document ).ready(function() {
+        reloadTable();
+    });
+
+    $(document).on('click','#btn-edit-nota', function(){
+        id = $(this).attr('data-id');
+        $('.btn-send-aluno').attr('data-id', id);
+        $.ajax({
+            url: 'backend/select_nota_edit.php',
+            data: {id: id},
+            method: 'POST',
+            success: function(data){
+                jq_json_obj = $.parseJSON(data);
+                $('#modal-notas').modal('show');
+                $('.aluno-cod').val(jq_json_obj[0]['cod']);
+                $('.descricao-avaliacao').val(jq_json_obj[0]['nota']);
+            }
+        });
+    });
+
     $( ".btn-add-nota" ).click(function() {
         $('#modal-notas').modal('show');
     });
@@ -102,7 +122,7 @@
                 if(data == "true"){
                     alert('Salvo com sucesso!');
                     $('#modal-notas').modal('hide');
-                   // reloadTable()
+                    reloadTable()
                 }else{
                     alert("Erro "+data);
                 }
@@ -110,7 +130,7 @@
         });
     })
 
-    /*function reloadTable(){
+    function reloadTable(){
         $.ajax({
             url: 'backend/select_notas_table.php',
             data: {},
@@ -122,20 +142,18 @@
                     cols = "";
                     for(x = 0; x < cont; x++){
                         cols += "<tr><td>"+jq_json_obj[x]['cod']+"</td>"+
-                        "<td>"+jq_json_obj[x][1]+"</td>" +
-                        "<td>"+jq_json_obj[x]['descricao']+"</td>" +
                         "<td>"+jq_json_obj[x]['nome']+"</td>" +
-                        "<td>"+jq_json_obj[x]['email']+"</td>" +
-                        '<td><a type="button" href="#" data-id="'+jq_json_obj[x][0]+'" id="btn-edit-aluno" style="margin-right: 10px;" class="btn btn-success btn-edit-turma"><i class="far fa-edit"></i></a>'+
-                        '<a type="button" href="#" data-id="'+jq_json_obj[x][0]+'" class="btn btn-danger btn-exclude-aluno"><i class="fas fa-times-circle"></i></a></td></tr>';
+                        "<td>"+jq_json_obj[x]['nota']+"</td>" +
+                        '<td><a type="button" href="#" data-id="'+jq_json_obj[x][0]+'" id="btn-edit-nota" style="margin-right: 10px;" class="btn btn-success btn-edit-nota"><i class="far fa-edit"></i></a>'+
+                        '<a type="button" href="#" data-id="'+jq_json_obj[x][0]+'" class="btn btn-danger btn-exclude-nota"><i class="fas fa-times-circle"></i></a></td></tr>';
                     }
-                    $('.tableAluno').html(cols);
+                    $('.tableNotas').html(cols);
                 }else{
 
                 }
             }
         });
-    }*/
+    }
 </script>
 
 <?php } else{
