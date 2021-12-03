@@ -84,7 +84,7 @@
                         $sqlUpdate = "UPDATE doencaspre SET descricao='$doencas' WHERE cod='$id_doencas'";
 
                         if (mysqli_query($connection, $sqlUpdate)) {
-                            
+                            echo "true";
                         }else{
                             echo "Erro de atualização do registro: " . mysqli_error($connection);
                         }
@@ -119,7 +119,7 @@
                         $sqlUpdate = "UPDATE doencaspre SET descricao='$doencas' WHERE cod='$id_doencas'";
 
                         if (mysqli_query($connection, $sqlUpdate)) {
-                            
+                            echo "true";
                         }else{
                             echo "Erro de atualização do registro: " . mysqli_error($connection);
                         }

@@ -275,11 +275,36 @@
         $('#modal-address').modal('show');
     })
 
+    $(".btn-address").click(function(){
+        estado = $('.estado-user').val();
+        municipio = $('.municipio').val();
+        bairro = $('.bairro').val();
+        rua = $('.rua').val();
+        numero_casa = $('.numero-casa').val();
+        complemento =$('.complemento').val();
+        if(estado == "" || municipio == "" || bairro == "" || rua == "" || numero_casa == "" || complemento == ""){
+            alert("Digite os valores dos campos");  
+        }else{
+            $('#modal-document').modal('hide');
+            $("#modal-aluno").css({"overflow":"auto"});
+        }
+    })    
+
     $(".btn-document").click(function(){
         if($('.descricao-document').val() == "" || $('.cpf-document').val() == "" || $('.rg-document').val() == ""){
             alert("Digite os valores dos campos");  
+        }else{
+            $('#modal-address').modal('hide');
+            $("#modal-aluno").css({"overflow":"auto"});
         }
-        
+    })
+
+    $('#modal-address').on('hidden.bs.modal', function () {
+        $("#modal-aluno").css({"overflow":"auto"});
+    })
+
+    $('#modal-document').on('hidden.bs.modal', function () {
+        $("#modal-aluno").css({"overflow":"auto"});
     })
 
     $( ".btn-send-aluno" ).click(function(event) {
@@ -405,8 +430,9 @@
                     if(data == "true"){
                         alert("Salvo com sucesso!")
                         reloadTable()
-                    }else if(data == "false"){
+                    }else{
                         alert("Erro ao salvar aluno!")
+                        reloadTable()
                     }
                 }
             });
@@ -482,6 +508,8 @@
                 endereco = jq_json_obj[0]['endereco'];
                 restAlim = jq_json_obj[0]['restalimentar'];
                 doenc = jq_json_obj[0]['doencaspre'];
+
+                console.log(turma + " " + doctos + " " + endereco + " " + restAlim + " " + doenc)
             }
         });
     });
