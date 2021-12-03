@@ -7,6 +7,7 @@
     $id_endereco = $_POST['id_endereco'];
     $id_restalimentar = $_POST['id_restalimentar'];
     $id_doencas = $_POST['id_doencas'];
+    $id_turma = $_POST['id_turma'];
 
     $nome = $_POST['nome'];
     $data_nasc = $_POST['data_nasc'];
@@ -22,7 +23,6 @@
     $rua = $_POST['rua']; 
     $numero_casa = $_POST['numero_casa'];
     $complemento = $_POST['complemento'];
-    $turma = 1;
     $descricao = $_POST['descricao'];
     $restricoes = $_POST['restricoes'];
     $doencas = $_POST['doencas'];
@@ -67,7 +67,8 @@
     if($new_name != ""){
 
         $sqlUpdate = "UPDATE aluno SET nome='$nome', datanasc='$data_nasc', datadeingresso='$data_ingresso',
-        medicamento='$medicamento', foto='$new_name', genero='$genero', tipo_sang='$tipo_sang' WHERE cod='$id_aluno'";
+        medicamento='$medicamento', foto='$new_name', genero='$genero', tipo_sang='$tipo_sang' 
+        turma='$id_turma' WHERE cod='$id_aluno'";
 
         if (mysqli_query($connection, $sqlUpdate)) {
             //echo "Registro atualizado com sucesso!";

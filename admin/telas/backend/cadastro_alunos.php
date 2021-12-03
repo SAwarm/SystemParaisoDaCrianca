@@ -15,7 +15,7 @@
    $rua = $_POST['rua']; 
    $numero_casa = $_POST['numero_casa'];
    $complemento = $_POST['complemento'];
-   $turma = 1;
+   $turma = $_POST['id_turma'];
    $descricao = $_POST['descricao'];
    $restricoes = $_POST['restricoes'];
    $doencas = $_POST['doencas'];

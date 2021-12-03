@@ -71,6 +71,10 @@
                     <option value="Outros">Outros</option>
                 </select>
             </div>
+            <div class="form-group turma-div">  
+                <label for="message-text" class="col-form-label">Código turma</label>
+                <input type="number" class="form-control turma" id="message-text turma"></input>
+            </div>
             <div class="form-group file-user-div">  
                 <label for="message-text" class="col-form-label">Foto:</label>
                 <input type="file" class="form-control file-user" id="message-text file-user"></input>
@@ -326,6 +330,7 @@
         rua = $('.rua').val();
         numero_casa = $('.numero-casa').val();
         complemento =$('.complemento').val();
+        turma = $('.turma').val();
         msg = "";
 
         /*if(nome == ""){
@@ -410,6 +415,7 @@
         data.append('rua', rua);
         data.append('numero_casa', numero_casa);
         data.append('complemento', complemento);
+        data.append('id_turma', turma);
 
         if($(this).attr('data-id') != ""){
             data.append('id_aluno', $(this).attr('data-id'));
@@ -417,6 +423,7 @@
             data.append('id_endereco', endereco);
             data.append('id_restalimentar', restAlim);
             data.append('id_doencas', doenc);
+            data.append('id_turma', turma);
 
             jQuery.ajax({
                 url: 'backend/update_aluno.php',
@@ -463,7 +470,6 @@
     var doenc = 0;
 
     $(document).on('click','#btn-edit-aluno', function(){
-        $('.turma').val('');
         id = $(this).attr('data-id');
         $('.btn-send-aluno').attr('data-id', id);
         $.ajax({
@@ -474,6 +480,7 @@
                 jq_json_obj = $.parseJSON(data);
                 $('#modal-aluno').modal('show');
                 //console.log()
+                $('.turma').val(jq_json_obj[0]['turma']);
                 $('.nome-user').val(jq_json_obj[0][1]);
                 $('.date-nasc').val(jq_json_obj[0]['datanasc']);
                 $('.date-ingresso').val(jq_json_obj[0]['datadeingresso']);
@@ -508,8 +515,7 @@
                 endereco = jq_json_obj[0]['endereco'];
                 restAlim = jq_json_obj[0]['restalimentar'];
                 doenc = jq_json_obj[0]['doencaspre'];
-
-                console.log(turma + " " + doctos + " " + endereco + " " + restAlim + " " + doenc)
+                turma = jq_json_obj[0]['turma'];
             }
         });
     });
