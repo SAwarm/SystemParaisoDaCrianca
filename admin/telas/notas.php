@@ -50,9 +50,7 @@
                                     <form>
                                         <div class="form-group descricao-document-div">
                                             <label for="message-text" class="col-form-label">Aluno:</label>
-                                            <select type="date" class="form-control aluno-user" id="message-text aluno-user">
-                                                <option value="">Teste</option>
-                                            </select>
+                                            <input type="number" class="form-control aluno-cod" id="message-text aluno-cod"></input>                 
                                         </div>
                                         <div class="form-group descricao-document-div">
                                             <label for="descricao-document" class="col-form-label">Avaliação:</label>
@@ -63,7 +61,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <br>
-                                    <button type="button" class="btn btn-primary btn-fill btn-add-turma" style="cursor: pointer;">Adicionar</button>
+                                    <button type="button" class="btn btn-primary btn-fill btn-add-new-nota" style="cursor: pointer;">Adicionar</button>
                                 </div>
                                 </div>
                             </div>
@@ -92,6 +90,52 @@
     $( ".btn-add-nota" ).click(function() {
         $('#modal-notas').modal('show');
     });
+
+    $('.btn-add-new-nota').click(function(){
+        id_aluno = $('.aluno-cod').val();
+        avaliacao = $('.descricao-avaliacao').val();
+        $.ajax({
+            url: 'backend/cadastro_avaliacao.php',
+            data: {id_aluno: id_aluno, avaliacao: avaliacao},
+            method: 'POST',
+            success: function(data){
+                if(data == "true"){
+                    alert('Salvo com sucesso!');
+                    $('#modal-notas').modal('hide');
+                   // reloadTable()
+                }else{
+                    alert("Erro "+data);
+                }
+            }
+        });
+    })
+
+    /*function reloadTable(){
+        $.ajax({
+            url: 'backend/select_notas_table.php',
+            data: {},
+            method: 'POST',
+            success: function(data){
+                if(data != "null"){
+                    jq_json_obj = $.parseJSON(data);
+                    cont = jq_json_obj.length;
+                    cols = "";
+                    for(x = 0; x < cont; x++){
+                        cols += "<tr><td>"+jq_json_obj[x]['cod']+"</td>"+
+                        "<td>"+jq_json_obj[x][1]+"</td>" +
+                        "<td>"+jq_json_obj[x]['descricao']+"</td>" +
+                        "<td>"+jq_json_obj[x]['nome']+"</td>" +
+                        "<td>"+jq_json_obj[x]['email']+"</td>" +
+                        '<td><a type="button" href="#" data-id="'+jq_json_obj[x][0]+'" id="btn-edit-aluno" style="margin-right: 10px;" class="btn btn-success btn-edit-turma"><i class="far fa-edit"></i></a>'+
+                        '<a type="button" href="#" data-id="'+jq_json_obj[x][0]+'" class="btn btn-danger btn-exclude-aluno"><i class="fas fa-times-circle"></i></a></td></tr>';
+                    }
+                    $('.tableAluno').html(cols);
+                }else{
+
+                }
+            }
+        });
+    }*/
 </script>
 
 <?php } else{
