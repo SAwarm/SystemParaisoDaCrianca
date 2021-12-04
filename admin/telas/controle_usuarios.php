@@ -290,6 +290,39 @@
         
     })
 
+    $(document).on('click','#btn-edit-aluno', function(){
+        id = $(this).attr('data-id');
+        $('.btn-send-aluno').attr('data-id', id);
+        $.ajax({
+            url: 'backend/select_aluno_edit.php',
+            data: {id: id},
+            method: 'POST',
+            success: function(data){
+                jq_json_obj = $.parseJSON(data);
+                $('#modal-users').modal('show');
+                //console.log()
+                
+                if(jq_json_obj[0]['genero'] == "1"){
+                    $('.genero-user').val("Masculino");
+                }else if(jq_json_obj[0]['genero'] == "2"){
+                    $('.genero-user').val("Feminino");
+                }else{
+                    $('.genero-user').val("Outros");
+                }
+
+                $('#exampleModalLabel').html('Editando Aluno');
+                $('.btn-add-user').attr('data-id', id)
+
+                turma = jq_json_obj[0]['turma'];
+                doctos = jq_json_obj[0]['doctos'];
+                endereco = jq_json_obj[0]['endereco'];
+                restAlim = jq_json_obj[0]['restalimentar'];
+                doenc = jq_json_obj[0]['doencaspre'];
+                turma = jq_json_obj[0]['turma'];
+            }
+        });
+    });
+
     $( ".btn-send-users" ).click(function(event) {
         nome = $('.nome-user').val();
         senha = $('.senha').val();
@@ -378,12 +411,7 @@
             alert("Digite os campos de: "+ msg);
             event.preventDefault();
         }*/
-
         var data = new FormData();
-            jQuery.each(jQuery('.file-user')[0].files, function(i, file) {
-            data.append('file-'+i, file);
-        });
-
         data.append('nome', nome);
         data.append('senha', senha);
         data.append('email', email);
@@ -406,25 +434,56 @@
         data.append('rua', rua);
         data.append('numero_casa', numero_casa);
         data.append('complemento', complemento);
-        
-        jQuery.ajax({
-            url: 'backend/cadastro_funcionario.php',
-            data: data,
-            cache: false,
-            contentType: false,
-            processData: false,
-            method: 'POST',
-            type: 'POST',
-            success: function(data){
-                if(data == "true"){
-                    reloadTable()
-                    alert("Salvo com sucesso!");
-                }else if(data == "false"){
-                    reloadTable()
-                    alert("Erro ao salvar registro!");
+
+        if($(this).attr('data-id') != ""){
+            jQuery.each(jQuery('.file-user')[0].files, function(i, file) {
+                data.append('file-'+i, file);
+            });
+
+            jQuery.ajax({
+                url: 'backend/update_funcionario.php',
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                method: 'POST',
+                type: 'POST',
+                success: function(data){
+                    if(data == "true"){
+                        reloadTable()
+                        alert("Salvo com sucesso!");
+                    }else if(data == "false"){
+                        reloadTable()
+                        alert("Erro ao salvar registro!");
+                    }
                 }
-            }
-        });
+            });
+
+        }else{
+            jQuery.each(jQuery('.file-user')[0].files, function(i, file) {
+                data.append('file-'+i, file);
+            });
+
+
+            jQuery.ajax({
+                url: 'backend/cadastro_funcionario.php',
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                method: 'POST',
+                type: 'POST',
+                success: function(data){
+                    if(data == "true"){
+                        reloadTable()
+                        alert("Salvo com sucesso!");
+                    }else if(data == "false"){
+                        reloadTable()
+                        alert("Erro ao salvar registro!");
+                    }
+                }
+            });
+        }
     })
 
     $(".btn-add-document").click(function(){
@@ -463,7 +522,7 @@
                     }
                     $('.tableUsuarios').html(cols);
                 }else{
-                    
+
                 }
             }
         });
