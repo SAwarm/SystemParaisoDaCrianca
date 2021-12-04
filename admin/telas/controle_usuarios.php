@@ -149,7 +149,7 @@
       </div>
       <div class="modal-footer">
           <br>
-        <button type="button" class="btn btn-primary btn-fill btn-send-users" style="cursor: pointer;" data-dismiss="modal">Enviar</button>
+        <button type="button" class="btn btn-primary btn-fill btn-send-users" data-id="" style="cursor: pointer;" data-dismiss="modal">Enviar</button>
       </div>
     </div>
   </div>
@@ -290,17 +290,41 @@
         
     })
 
-    $(document).on('click','#btn-edit-aluno', function(){
+    $(document).on('click','#btn-edit-user', function(){
         id = $(this).attr('data-id');
-        $('.btn-send-aluno').attr('data-id', id);
+        funcao = $('.function-user').val();
+        //$('.btn-send-aluno').attr('data-id', id);
         $.ajax({
-            url: 'backend/select_aluno_edit.php',
-            data: {id: id},
+            url: 'backend/select_funcionario_edit.php',
+            data: {id: id, funcao: funcao},
             method: 'POST',
             success: function(data){
                 jq_json_obj = $.parseJSON(data);
                 $('#modal-users').modal('show');
-                //console.log()
+                
+                $('.nome-user').val(jq_json_obj[0][1]);
+                $('.senha').val(jq_json_obj[0]);
+                $('.date-email').val();
+                $('.date-nasc').val();
+                $('.date-ingresso').val();
+                $('.file-user').val();
+                $('.observation-user').val();
+                $('.descricao-document').val();
+                $('.cpf-document').val();
+                $('.rg-document').val();
+                $('.date-carga').val();
+                $('.date-formacao').val();
+                $('.restricoes-user').val();
+                $('.doencas-user').val();
+                $('.tipo-sanguineo').val();
+                $('.function-user').val();
+                $('.genero-user').val();
+                $('.estado-user').val();
+                $('.municipio').val();
+                $('.bairro').val();
+                $('.rua').val();
+                $('.numero-casa').val();
+                $('.complemento').val();
                 
                 if(jq_json_obj[0]['genero'] == "1"){
                     $('.genero-user').val("Masculino");
@@ -311,7 +335,7 @@
                 }
 
                 $('#exampleModalLabel').html('Editando Aluno');
-                $('.btn-add-user').attr('data-id', id)
+                $('.btn-send-users').attr('data-id', id)
 
                 turma = jq_json_obj[0]['turma'];
                 doctos = jq_json_obj[0]['doctos'];

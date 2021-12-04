@@ -4,8 +4,6 @@ require_once('./connection.php');
 
 $funcao = $_POST['func'];
 
-
-
 if($funcao == "Responsável"){
     // $query = "SELECT * FROM responsavel 
     // inner join doctos on doctos.cod = responsavel.doctos
