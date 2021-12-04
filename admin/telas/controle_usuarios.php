@@ -203,9 +203,9 @@
              <div class="form-group estado-user-div">  
                 <label for="message-text" class="col-form-label">Estado:</label>
                 <select type="date" class="form-control estado-user" id="message-text estado-user">
-                    <option value="sc">SC</option>
-                    <option value="pr">PR</option>
-                    <option value="rs">RS</option>
+                    <option value="SC">SC</option>
+                    <option value="PR">PR</option>
+                    <option value="PR">RS</option>
                 </select>
             </div>
             <div class="form-group municipio-div">
@@ -290,6 +290,12 @@
         
     })
 
+    doctos = "";
+    endereco = "";
+    restAlim = "";
+    doenc = "";
+    formacaoFunc = "";
+
     $(document).on('click','#btn-edit-user', function(){
         id = $(this).attr('data-id');
         funcao = $('.function-user').val();
@@ -303,29 +309,46 @@
                 $('#modal-users').modal('show');
                 
                 $('.nome-user').val(jq_json_obj[0][1]);
-                $('.senha').val(jq_json_obj[0]);
-                $('.date-email').val();
-                $('.date-nasc').val();
-                $('.date-ingresso').val();
-                $('.file-user').val();
-                $('.observation-user').val();
-                $('.descricao-document').val();
-                $('.cpf-document').val();
-                $('.rg-document').val();
-                $('.date-carga').val();
-                $('.date-formacao').val();
-                $('.restricoes-user').val();
-                $('.doencas-user').val();
-                $('.tipo-sanguineo').val();
-                $('.function-user').val();
-                $('.genero-user').val();
-                $('.estado-user').val();
-                $('.municipio').val();
-                $('.bairro').val();
-                $('.rua').val();
-                $('.numero-casa').val();
-                $('.complemento').val();
-                
+                $('.senha').val(jq_json_obj[0]['senha']);
+                $('.date-email').val(jq_json_obj[0]['email']);
+                $('.date-nasc').val(jq_json_obj[0]['datanasc']);
+                $('.date-ingresso').val(jq_json_obj[0]['datadeingresso']);
+                //$('.file-user').val();
+                $('.observation-user').val(jq_json_obj[0]['obs']);
+                $('.descricao-document').val(jq_json_obj[0][18]);
+                $('.cpf-document').val(jq_json_obj[0]['CPF']);
+                $('.rg-document').val(jq_json_obj[0]['RG']);
+                $('.date-carga').val(jq_json_obj[0][29]);
+                $('.date-formacao').val(jq_json_obj[0][31]);
+                $('.restricoes-user').val(jq_json_obj[0][33]);
+                $('.doencas-user').val(jq_json_obj[0][35]);
+
+                if(jq_json_obj[0]['tipo_sang'] == 1){
+                    $('.tipo-sanguineo').val('a_positivo');
+
+                }else if(jq_json_obj[0]['tipo_sang'] == 2){
+                    $('.tipo-sanguineo').val('a_negativo');
+
+                }else if(jq_json_obj[0]['tipo_sang'] == 3){
+                    $('.tipo-sanguineo').val('b_positivo');
+
+                }else if(jq_json_obj[0]['tipo_sang'] == 4){
+                    $('.tipo-sanguineo').val('b_negativo');
+
+                }else if(jq_json_obj[0]['tipo_sang'] == 5){
+                    $('.tipo-sanguineo').val('ab_positivo');
+
+                }else if(jq_json_obj[0]['tipo_sang'] == 6){
+                    $('.tipo-sanguineo').val('ab_negativo');
+
+                }else if(jq_json_obj[0]['tipo_sang'] == 7){
+                    $('.tipo-sanguineo').val('o_positivo');
+
+                }else if(jq_json_obj[0]['tipo_sang'] == 8){
+                    $('.tipo-sanguineo').val('o_negativo');
+
+                }
+
                 if(jq_json_obj[0]['genero'] == "1"){
                     $('.genero-user').val("Masculino");
                 }else if(jq_json_obj[0]['genero'] == "2"){
@@ -334,15 +357,23 @@
                     $('.genero-user').val("Outros");
                 }
 
+                $('.function-user').val(funcao);
+                $('.estado-user').val(jq_json_obj[0]['estado']);
+                $('.municipio').val(jq_json_obj[0]['municipio']);
+                $('.bairro').val(jq_json_obj[0]['bairro']);
+                $('.rua').val(jq_json_obj[0]['rua']);
+                $('.numero-casa').val(jq_json_obj[0]['numero']);
+                $('.complemento').val(jq_json_obj[0]['complemento']);
+
                 $('#exampleModalLabel').html('Editando Aluno');
                 $('.btn-send-users').attr('data-id', id)
 
-                turma = jq_json_obj[0]['turma'];
                 doctos = jq_json_obj[0]['doctos'];
                 endereco = jq_json_obj[0]['endereco'];
                 restAlim = jq_json_obj[0]['restalimentar'];
                 doenc = jq_json_obj[0]['doencaspre'];
-                turma = jq_json_obj[0]['turma'];
+                formacaoFunc =  jq_json_obj[0]['restalimentar'];
+
             }
         });
     });
