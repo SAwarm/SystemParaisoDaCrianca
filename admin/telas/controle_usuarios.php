@@ -18,7 +18,7 @@
                             <br>
                             <div style="margin-bottom: 2%;">
                                 <a type="button" href="#" class="btn btn-primary btn-fill btn-add-user" style="margin-right: 62.5%;">Adicionar Novo Usuário</a>
-                                    <select class="form-group" style="height: 50%;
+                                    <select class="form-group function-user" style="height: 50%;
                                         padding: 8px 20px;
                                         margin: 6px 0;
                                         display: inline-block;
@@ -68,7 +68,7 @@
             </div>
             <div class="form-group function-user-div">  
                 <label for="message-text" class="col-form-label">Função</label>
-                <select type="date" class="form-control function-user" id="message-text function-user">
+                <select type="date" class="form-control function-user-modal" id="message-text function-user">
                     <option value="Coordenador(a)">Coordenador(a)</option>
                     <option value="Professor(a)">Professor(a)</option>
                     <option value="Auxiliar">Auxiliar</option>
@@ -320,6 +320,7 @@
     restAlim = "";
     doenc = "";
     formacaoFunc = "";
+    cargah = "";
 
     $(document).on('click','#btn-edit-user', function(){
         id = $(this).attr('data-id');
@@ -382,7 +383,7 @@
                     $('.genero-user').val("Outros");
                 }
 
-                $('.function-user').val(funcao);
+                $('.function-user-modal').val(funcao);
                 $('.estado-user').val(jq_json_obj[0]['estado']);
                 $('.municipio').val(jq_json_obj[0]['municipio']);
                 $('.bairro').val(jq_json_obj[0]['bairro']);
@@ -397,7 +398,8 @@
                 endereco = jq_json_obj[0]['endereco'];
                 restAlim = jq_json_obj[0]['restalimentar'];
                 doenc = jq_json_obj[0]['doencaspre'];
-                formacaoFunc =  jq_json_obj[0]['restalimentar'];
+                formacaoFunc =  jq_json_obj[0]['formacao'];
+                cargah = jq_json_obj[0]['cargah'];
 
             }
         });
@@ -419,7 +421,7 @@
         restricoes = $('.restricoes-user').val();
         doencas = $('.doencas-user').val();
         tipo_sang = $('.tipo-sanguineo').val();
-        funcao = $('.function-user').val();
+        funcao = $('.function-user-modal').val();
         genero = $('.genero-user').val();
         estado = $('.estado-user').val();
         municipio = $('.municipio').val();
@@ -516,6 +518,14 @@
         data.append('complemento', complemento);
 
         if($(this).attr('data-id') != ""){
+            data.append('id_user', $(this).attr('data-id'))
+            data.append('id_doctos', doctos);
+            data.append('id_endereco', endereco);
+            data.append('id_doencas', doenc);
+            data.append('id_restalimentar', restAlim);
+            data.append('id_cargah', cargah);
+            data.append('id_formacao', formacaoFunc);
+
             jQuery.each(jQuery('.file-user')[0].files, function(i, file) {
                 data.append('file-'+i, file);
             });
@@ -531,10 +541,10 @@
                 success: function(data){
                     if(data == "true"){
                         reloadTable()
-                        alert("Salvo com sucesso!");
-                    }else if(data == "false"){
+                        alert("Alterado com sucesso!");
+                    }else{
                         reloadTable()
-                        alert("Erro ao salvar registro!");
+                        alert("Erro ao alterar registro! "+data);
                     }
                 }
             });
