@@ -1,19 +1,19 @@
 <?php
-   //require_once('./connection.php');
+   require_once('./connection.php');
 
-
-   print_r($_POST);
-   /*$nome = $_POST['nome'];
+   $nome = $_POST['nome'];
+   $senha = $_POST['senha'];
    $email = $_POST['email'];
    $data_nasc = $_POST['data_nasc'];
    $data_ingresso = $_POST['data_ingresso'];
-   $file = $_POST['file'];
    $observacao = $_POST['observacao'];
    $descricao = $_POST['descricao'];
    $cpf = $_POST['cpf'];
    $rg = $_POST['rg'];
    $carga = $_POST['carga'];
-   $formacao = $_POST['formacao'];
+   if(isset($_POST['formacao'])){
+       $formacao = $_POST['formacao'];
+   }
    $restricoes = $_POST['restricoes'];
    $doencas = $_POST['doencas'];
    $tipo_sang = $_POST['tipo_sang'];
@@ -64,45 +64,45 @@
     }
 
     function CadastroDocument($connection, $descricao, $cpf, $rg){
-        $queryInsert = "INSERT INTO doctos (descricao, cpf, rg) VALUES ($descricao, $cpf, $rg)";
+        $queryInsert = "INSERT INTO doctos (descricao, cpf, rg) VALUES ('$descricao', '$cpf', '$rg')";
 
         $result = mysqli_query($connection, $queryInsert);
-        return mysqli_insert_id();
+        return mysqli_insert_id($connection);
    }
 
    function CadastroAddress($connection, $estado, $municipio, $bairro, $rua, $numero_casa, $complemento){
-        $queryInsert = "INSERT INTO endereco (estado, municipio, bairro, rua, numero, complemento) VALUES ($estado, $municipio, $bairro, $rua, $numero_casa, $complemento)";
+        $queryInsert = "INSERT INTO endereco (estado, municipio, bairro, rua, numero, complemento) VALUES ('$estado', '$municipio', '$bairro', '$rua', '$numero_casa', '$complemento')";
 
         $result = mysqli_query($connection, $queryInsert);
-        return mysqli_insert_id();
+        return mysqli_insert_id($connection);
    }
 
    function CadastroCarga($connection, $carga){
-        $queryInsert = "INSERT INTO cargah (descricao) VALUES ($carga)";
+        $queryInsert = "INSERT INTO cargah (descricao) VALUES ('$carga')";
 
         $result = mysqli_query($connection, $queryInsert);
-        return mysqli_insert_id();
+        return mysqli_insert_id($connection);
    }
 
    function CadastroFormacao($connection, $formacao){
-        $queryInsert = "INSERT INTO formacao (descricao) VALUES ($formacao)";
+        $queryInsert = "INSERT INTO formacao (descricao) VALUES ('$formacao')";
 
         $result = mysqli_query($connection, $queryInsert);
-        return mysqli_insert_id();
+        return mysqli_insert_id($connection);
    }
 
     function CadastroRestAlimentar($connection, $restricoes){
-        $queryInsert = "INSERT INTO restalimentar (descricao) VALUES ($restricoes)";
+        $queryInsert = "INSERT INTO restalimentar (descricao) VALUES ('$restricoes')";
 
-        $result = mysqli_query($connection, $connection, $queryInsert);
-        return mysqli_insert_id();
+        $result = mysqli_query($connection, $queryInsert);
+        return mysqli_insert_id($connection);
     }
 
     function CadastroDoencas($connection, $doencas){
-        $queryInsert = "INSERT INTO doencaspre (descricao) VALUES ($doencas)";
+        $queryInsert = "INSERT INTO doencaspre (descricao) VALUES ('$doencas')";
 
         $result = mysqli_query($connection, $queryInsert);
-        return mysqli_insert_id();
+        return mysqli_insert_id($connection);
     }
 
     $doctos = CadastroDocument($connection, $descricao, $cpf, $rg);
@@ -112,7 +112,15 @@
     $restAlim = CadastroRestAlimentar($connection, $restricoes);
     $doenc = CadastroDoencas($connection, $doencas);
 
-    $senha = $funcao.$nome.$data_nasc.$formacao.$genero;
+    $new_name = "";
+    if(isset($_FILES['file-0']))
+    {
+        $ext = strtolower(substr($_FILES['file-0']['name'],-4)); //Pegando extensão do arquivo
+        $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
+        $dir = './imagens/'; //Diretório para uploads 
+        move_uploaded_file($_FILES['file-0']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
+        //echo("Imagen enviada com sucesso!");
+    }
 
     $queryInsert = "INSERT INTO funcionario 
         (
@@ -130,27 +138,32 @@
             formacao,
             restalimentar,
             doencaspre,
-            tipo_sangue,
+            tipo_sang,
             senha
         ) 
         VALUES 
         (
-            $nome,
-            $email,
-            $data_nasc,
-            $datadeingresso,
-            $file,
-            $observacao,
-            $doctos,
-            $genero,
-            $endereco,
-            $funcao,
-            $cargah,
-            $formacaoFunc,
-            $restAlim,
-            $doenc,
-            $tipo_sang,
-            $senha
+            '$nome',
+            '$email',
+            '$data_nasc',
+            '$data_ingresso',
+            '$new_name',
+            '$observacao',
+            '$doctos',
+            '$genero',
+            '$endereco',
+            '$funcao',
+            '$cargah',
+            '$formacaoFunc',
+            '$restAlim',
+            '$doenc',
+            '$tipo_sang',
+            '$senha'
         )";
 
-    */
+    if(mysqli_query($connection, $queryInsert)){
+        echo "true";
+    }else{
+        // .mysqli_error($connection);
+        echo "false";
+    }

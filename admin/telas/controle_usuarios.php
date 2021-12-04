@@ -127,6 +127,10 @@
                 <label for="message-text" class="col-form-label">Doenças:</label>
                 <textarea type="textarea" class="form-control doencas-user" id="message-text doencas-user"></textarea>
             </div>
+            <div class="form-group senha">
+                <label for="message-text" class="col-form-label">Senha:</label>
+                <input type="text" class="form-control senha" id="message-text senha"></input>
+            </div>
             <div class="form-group tipo-sanguineo-div">  
                 <label for="message-text" class="col-form-label">Tipo sanguíneo:</label>
                 <select type="date" class="form-control tipo-sanguineo" id="message-text tipo-sanguineo">
@@ -139,10 +143,6 @@
                     <option value="o_positivo">O+</option>
                     <option value="o_negativo">O-</option>
                 </select>
-            </div>
-            <div class="form-group senha-div">
-                <label for="message-text" class="col-form-label">Formação:</label>
-                <input type="text" class="form-control date-senha" id="message-text date-senha"></input>
             </div>
         </form>
         <br>
@@ -291,6 +291,7 @@
 
     $( ".btn-send-users" ).click(function(event) {
         nome = $('.nome-user').val();
+        senha = $('.senha').val();
         email = $('.date-email').val();
         data_nasc = $('.date-nasc').val();
         data_ingresso = $('.date-ingresso').val();
@@ -316,6 +317,9 @@
 
         /*if(nome == ""){
             msg += "Nome";
+        }
+        if(senha == ""){
+            msg += " Senha";
         }
         if(email == ""){
            msg += " Email";
@@ -380,6 +384,7 @@
         });
 
         data.append('nome', nome);
+        data.append('senha', senha);
         data.append('email', email);
         data.append('data_nasc', data_nasc);
         data.append('data_ingresso', data_ingresso);
@@ -410,7 +415,11 @@
             method: 'POST',
             type: 'POST',
             success: function(data){
-                // alert(data);
+                if(data == "true"){
+                    alert("Salvo com sucesso!");
+                }else if(data == "false"){
+                    alert("Erro ao salvar registro!");
+                }
             }
         });
     })
