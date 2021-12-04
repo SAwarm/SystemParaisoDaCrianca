@@ -239,6 +239,31 @@
   </div>
 </div>
 
+<div class="modal fade" id="modal-exclusao" style="background-color: rgba(0,0,0,0.5);" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabe2l">Excluir Usuário</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body message-modal" style="color: black">
+            <form>
+                <div class="form-group turma-document-div">
+                    <h5 class="modal-title" id="exampleModalLabe2l">Deseja realmente excluir essa usuário?</h5>
+                </div>
+            </form>
+            <br>
+        </div>
+        <div class="modal-footer">
+            <br>
+            <button type="button" class="btn btn-danger btn-fill btn-exclude" style="cursor: pointer;">Excluir</button>
+        </div>
+        </div>
+    </div>
+</div> 
+
 
 
 <script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
@@ -541,6 +566,32 @@
         }
     })
 
+    $(document).on('click','.btn-exclude-user', function(){
+        $('#modal-exclusao').modal('show');
+
+        id = $(this).attr('data-id');
+        $('.btn-exclude').attr('data-id', id);
+    });
+
+    $(document).on('click','.btn-exclude', function(){
+        id = $(this).attr('data-id');
+        funcao = $('.function-user').val();
+        $.ajax({
+            url: 'backend/exclude_funcionario.php',
+            data: {id: id, funcao: funcao},
+            method: 'POST',
+            success: function(data){
+                if(data == "true"){
+                    alert("Excluído com sucesso!");
+                    $('#modal-exclusao').modal('hide');
+                    reloadTable()
+                }else{
+                    alert("Erro "+data);
+                }
+            }
+        });
+    });
+
     $(".btn-add-document").click(function(){
         $('#modal-document').modal('show');
     })
@@ -568,7 +619,7 @@
                     cont = jq_json_obj.length;
                     cols = "";
                     for(x = 0; x < cont; x++){
-                        cols += "<tr><td>"+jq_json_obj[x]['cod']+"</td>"+
+                        cols += "<tr><td>"+jq_json_obj[x][0]+"</td>"+
                         "<td>"+jq_json_obj[x]['nome']+"</td>" +
                         "<td>"+jq_json_obj[x][37]+"</td>" +
                         "<td>"+jq_json_obj[x]['email']+"</td>" +
