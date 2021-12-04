@@ -44,7 +44,7 @@
                                             <th>Email</th>
                                             <th>Opções</th>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="tableUsuarios">
                                         </tbody>
                                     </table>
                                 </div>
@@ -267,6 +267,7 @@
 
     $(document).ready(function() {
         $('.senha-div').hide();
+        reloadTable()
     });
 
     $( ".function-user" ).change(function() {
@@ -416,8 +417,10 @@
             type: 'POST',
             success: function(data){
                 if(data == "true"){
+                    reloadTable()
                     alert("Salvo com sucesso!");
                 }else if(data == "false"){
+                    reloadTable()
                     alert("Erro ao salvar registro!");
                 }
             }
@@ -438,5 +441,32 @@
         }
         
     })
+
+    function reloadTable(){
+        func = $('.function-user').val();
+        $.ajax({
+            url: 'backend/select_controle_usuarios.php',
+            data: {func: func},
+            method: 'POST',
+            success: function(data){
+                if(data != "null"){
+                    jq_json_obj = $.parseJSON(data);
+                    cont = jq_json_obj.length;
+                    cols = "";
+                    for(x = 0; x < cont; x++){
+                        cols += "<tr><td>"+jq_json_obj[x]['cod']+"</td>"+
+                        "<td>"+jq_json_obj[x]['nome']+"</td>" +
+                        "<td>"+jq_json_obj[x][37]+"</td>" +
+                        "<td>"+jq_json_obj[x]['email']+"</td>" +
+                        '<td><a type="button" href="#" data-id="'+jq_json_obj[x][0]+'" id="btn-edit-user" style="margin-right: 10px;" class="btn btn-success btn-edit-user"><i class="far fa-edit"></i></a>'+
+                        '<a type="button" href="#" data-id="'+jq_json_obj[x][0]+'" class="btn btn-danger btn-exclude-user"><i class="fas fa-times-circle"></i></a></td></tr>';
+                    }
+                    $('.tableUsuarios').html(cols);
+                }else{
+                    
+                }
+            }
+        });
+    }
 
 </script>
