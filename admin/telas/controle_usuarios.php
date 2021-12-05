@@ -131,6 +131,10 @@
                 <label for="message-text" class="col-form-label">Senha:</label>
                 <input type="text" class="form-control senha" id="message-text senha"></input>
             </div>
+            <div class="form-group cod-aluno-div">
+                <label for="message-text" class="col-form-label">Código do aluno:</label>
+                <input type="text" class="form-control cod-aluno" id="message-text cod-aluno"></input>
+            </div>
             <div class="form-group tipo-sanguineo-div">  
                 <label for="message-text" class="col-form-label">Tipo sanguíneo:</label>
                 <select type="date" class="form-control tipo-sanguineo" id="message-text tipo-sanguineo">
@@ -309,6 +313,8 @@
 
     $( ".btn-add-user" ).click(function() {
         $('#modal-users').modal('show');
+        $('#exampleModalLabel').html('Inserindo Usuário');
+        $('.btn-send-users').attr('data-id', id);
     });
 
     $( ".btn-filter" ).click(function() {
@@ -391,7 +397,7 @@
                 $('.numero-casa').val(jq_json_obj[0]['numero']);
                 $('.complemento').val(jq_json_obj[0]['complemento']);
 
-                $('#exampleModalLabel').html('Editando Aluno');
+                $('#exampleModalLabel').html('Editando Usuário');
                 $('.btn-send-users').attr('data-id', id)
 
                 doctos = jq_json_obj[0]['doctos'];
@@ -429,9 +435,10 @@
         rua = $('.rua').val();
         numero_casa = $('.numero-casa').val();
         complemento =$('.complemento').val();
+        cod_aluno = $('.cod-aluno').val();
         msg = "";
 
-        /*if(nome == ""){
+        if(nome == ""){
             msg += "Nome";
         }
         if(senha == ""){
@@ -492,7 +499,7 @@
         if(msg != ""){
             alert("Digite os campos de: "+ msg);
             event.preventDefault();
-        }*/
+        }
         var data = new FormData();
         data.append('nome', nome);
         data.append('senha', senha);
@@ -516,15 +523,16 @@
         data.append('rua', rua);
         data.append('numero_casa', numero_casa);
         data.append('complemento', complemento);
+        data.append('id_aluno', cod_aluno);
+        data.append('id_user', $(this).attr('data-id'))
+        data.append('id_doctos', doctos);
+        data.append('id_endereco', endereco);
+        data.append('id_doencas', doenc);
+        data.append('id_restalimentar', restAlim);
+        data.append('id_cargah', cargah);
+        data.append('id_formacao', formacaoFunc);
 
         if($(this).attr('data-id') != ""){
-            data.append('id_user', $(this).attr('data-id'))
-            data.append('id_doctos', doctos);
-            data.append('id_endereco', endereco);
-            data.append('id_doencas', doenc);
-            data.append('id_restalimentar', restAlim);
-            data.append('id_cargah', cargah);
-            data.append('id_formacao', formacaoFunc);
 
             jQuery.each(jQuery('.file-user')[0].files, function(i, file) {
                 data.append('file-'+i, file);
