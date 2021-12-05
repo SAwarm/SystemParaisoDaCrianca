@@ -66,6 +66,31 @@
                                 </div>
                             </div>
                         </div>    
+
+                        <div class="modal fade" id="modal-exclusao" style="background-color: rgba(0,0,0,0.5);" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLab">Excluir Avaliação</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body message-modal" style="color: black">
+                                    <form>
+                                        <div class="form-group turma-document-div">
+                                            <h5 class="modal-title" id="exampleModalLabe2l">Deseja realmente excluir essa avaliação?</h5>
+                                        </div>
+                                    </form>
+                                    <br>
+                                </div>
+                                <div class="modal-footer">
+                                    <br>
+                                    <button type="button" class="btn btn-danger btn-fill btn-exclude" style="cursor: pointer;">Excluir</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>   
 </body>
 <!--   Core JS Files   -->
 <script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
@@ -93,7 +118,8 @@
 
     $(document).on('click','#btn-edit-nota', function(){
         id = $(this).attr('data-id');
-        $('.btn-send-aluno').attr('data-id', id);
+        $('#exampleModalLabe2l').html('Editando Avaliação');
+        $('.btn-add-new-nota').attr('data-id', id);
         $.ajax({
             url: 'backend/select_nota_edit.php',
             data: {id: id},
@@ -109,26 +135,57 @@
 
     $( ".btn-add-nota" ).click(function() {
         $('#modal-notas').modal('show');
+        $('.exampleModalLabe2l').html('Inserindo Avaliação');
     });
 
     $('.btn-add-new-nota').click(function(){
-        id_aluno = $('.aluno-cod').val();
-        avaliacao = $('.descricao-avaliacao').val();
+
+        
+        id = $(this).attr('data-id');
+
+        if(id != ""){
+            alert('aa')
+        }else{
+            id_aluno = $('.aluno-cod').val();
+            avaliacao = $('.descricao-avaliacao').val();
+            $.ajax({
+                url: 'backend/cadastro_avaliacao.php',
+                data: {id_aluno: id_aluno, avaliacao: avaliacao},
+                method: 'POST',
+                success: function(data){
+                    if(data == "true"){
+                        alert('Salvo com sucesso!');
+                        $('#modal-notas').modal('hide');
+                        reloadTable()
+                    }else{
+                        alert("Erro "+data);
+                    }
+                }
+            });
+        }
+    })
+
+    $(document).on('click','.btn-exclude-nota', function(){
+        $('.turma').val('');
+        $('#modal-exclusao').modal('show');
+
+        id = $(this).attr('data-id');
+        $('.btn-exclude').attr('data-id', id);
+    });
+
+    $(document).on('click','.btn-exclude', function(){
+        id = $(this).attr('data-id');
         $.ajax({
-            url: 'backend/cadastro_avaliacao.php',
-            data: {id_aluno: id_aluno, avaliacao: avaliacao},
+            url: 'backend/exclude_nota.php',
+            data: {id: id},
             method: 'POST',
             success: function(data){
-                if(data == "true"){
-                    alert('Salvo com sucesso!');
-                    $('#modal-notas').modal('hide');
-                    reloadTable()
-                }else{
-                    alert("Erro "+data);
-                }
+                alert(data)
+                $('#modal-exclusao').modal('hide');
+                reloadTable();
             }
         });
-    })
+    });
 
     function reloadTable(){
         $.ajax({
