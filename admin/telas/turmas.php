@@ -110,6 +110,7 @@
         $('#modal-turmas').modal('show');
         $('.btn-add-turma').html('Adicionar');
         $('#exampleModalLabe2l').html('Cadastro Nova Turma');
+        $('.turma').val('');
     });
 
     $( document ).ready(function() {

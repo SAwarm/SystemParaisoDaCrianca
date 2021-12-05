@@ -261,6 +261,8 @@
 
     $( ".btn-add-user" ).click(function() {
         $('#modal-aluno').modal('show');
+        $('#exampleModalLabel').html('Editando Aluno');
+        $('.btn-send-aluno').attr('data-id', '');
         clean()
     });
     
@@ -286,7 +288,7 @@
         if(estado == "" || municipio == "" || bairro == "" || rua == "" || numero_casa == "" || complemento == ""){
             alert("Digite os valores dos campos");  
         }else{
-            $('#modal-document').modal('hide');
+            $('#modal-address').modal('hide');
             $("#modal-aluno").css({"overflow":"auto"});
         }
     })    
@@ -295,7 +297,7 @@
         if($('.descricao-document').val() == "" || $('.cpf-document').val() == "" || $('.rg-document').val() == ""){
             alert("Digite os valores dos campos");  
         }else{
-            $('#modal-address').modal('hide');
+            $('#modal-document').modal('hide');
             $("#modal-aluno").css({"overflow":"auto"});
         }
     })
@@ -399,7 +401,7 @@
         data.append('complemento', complemento);
         data.append('id_turma', turma);
 
-        if($(this).attr('data-id') != ""){
+        if($(this).attr('data-id') != "" && msg == ""){
             data.append('id_aluno', $(this).attr('data-id'));
             data.append('id_doctos', doctos);
             data.append('id_endereco', endereco);
@@ -425,7 +427,7 @@
                     }
                 }
             });
-        }else{
+        }else if(msg == ""){
             jQuery.ajax({
                 url: 'backend/cadastro_alunos.php',
                 data: data,
@@ -490,7 +492,7 @@
                 $('.complemento').val(jq_json_obj[0]['complemento']);
 
                 $('#exampleModalLabel').html('Editando Aluno');
-                $('.btn-send-aluno').attr('data-id', id)
+                $('.btn-send-aluno').attr('data-id', id);
 
                 turma = jq_json_obj[0]['turma'];
                 doctos = jq_json_obj[0]['doctos'];

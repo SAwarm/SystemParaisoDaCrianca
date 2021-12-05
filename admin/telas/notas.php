@@ -138,6 +138,7 @@
         $('#exampleModalLabe2l').html('Inserindo Avaliação');
         $('.aluno-cod').val('');
         $('.descricao-avaliacao').val('');
+        $('.btn-add-new-nota').attr('data-id', '');
     });
 
     $('.btn-add-new-nota').click(function(){

@@ -10,9 +10,9 @@
         $result = mysqli_query($connection, $queryInsert);
         
         if(!empty(mysqli_insert_id($connection))){
-            return "turma inserida com sucesso!";
+            return "Turma inserida com sucesso!";
         }else{
-            return "erro ao inserir turma!";
+            return "Erro ao inserir turma!";
         }
    }
 

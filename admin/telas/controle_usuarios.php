@@ -315,7 +315,7 @@
     $( ".btn-add-user" ).click(function() {
         $('#modal-users').modal('show');
         $('#exampleModalLabel').html('Inserindo Usuário');
-        $('.btn-send-users').attr('data-id', id);
+        $('.btn-send-users').attr('data-id', '');
         clean();
     });
 
@@ -678,8 +678,25 @@
     $(".btn-document").click(function(){
         if($('.descricao-document').val() == "" || $('.cpf-document').val() == "" || $('.rg-document').val() == ""){
             alert("Digite os valores dos campos");  
+        }else{
+            $('#modal-document').modal('hide');
+            $("#modal-aluno").css({"overflow":"auto"});
         }
-        
+    })
+
+    $(".btn-address").click(function(){
+        estado = $('.estado-user').val();
+        municipio = $('.municipio').val();
+        bairro = $('.bairro').val();
+        rua = $('.rua').val();
+        numero_casa = $('.numero-casa').val();
+        complemento =$('.complemento').val();
+        if(estado == "" || municipio == "" || bairro == "" || rua == "" || numero_casa == "" || complemento == ""){
+            alert("Digite os valores dos campos");  
+        }else{
+            $('#modal-address').modal('hide');
+            $("#modal-aluno").css({"overflow":"auto"});
+        }
     })
 
     function reloadTable(){
