@@ -41,7 +41,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabe2l">Cadastro Nova Avaliação</h5>
+                                    <h5 class="modal-title" id="exampleModalLabe2l">Avaliação</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
@@ -50,7 +50,7 @@
                                     <form>
                                         <div class="form-group descricao-document-div">
                                             <label for="message-text" class="col-form-label">Aluno:</label>
-                                            <input type="number" class="form-control aluno-cod" id="message-text aluno-cod"></input>                 
+                                            <input type="text" class="form-control aluno_nota" id="message-text aluno-cod"></input>                 
                                         </div>
                                         <div class="form-group descricao-document-div">
                                             <label for="descricao-document" class="col-form-label">Avaliação:</label>
@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <br>
-                                    <button type="button" class="btn btn-primary btn-fill btn-add-new-nota" style="cursor: pointer;">Adicionar</button>
+                                    <!-- <button type="button" class="btn btn-primary btn-fill btn-add-new-nota" style="cursor: pointer;">Adicionar</button> -->
                                 </div>
                                 </div>
                             </div>
@@ -116,6 +116,22 @@
         reloadTable();
     });
 
+    $(document).on('click','#btn-view-nota', function(){
+        id = $(this).attr('data-id');
+        $.ajax({
+            url: 'backend/select_notas_responsavel.php',
+            data: {id: id},
+            method: 'POST',
+            success: function(data){
+                jq_json_obj = $.parseJSON(data);
+                cont = jq_json_obj.length;
+                $('#modal-notas').modal('show');
+                $('.aluno_nota').val(jq_json_obj[0]['nome']);
+                $('#descricao-avaliacao').val(jq_json_obj[0]['nota']);
+            }
+        });
+    })
+
     function reloadTable(){
         $.ajax({
             url: 'backend/select_notas_responsavel_table.php',
@@ -130,7 +146,7 @@
                         cols += "<tr><td>"+jq_json_obj[x]['cod']+"</td>"+
                         "<td>"+jq_json_obj[x]['nome']+"</td>" +
                         "<td>...</td>" +
-                        '<td><a type="button" href="#" data-id="'+jq_json_obj[x][0]+'" id="btn-view-nota" style="margin-right: 10px;" class="btn btn-primary btn-edit-nota"><i class="far fa-eye"></i></i></a></tr>';
+                        '<td><a type="button" href="#" data-id="'+jq_json_obj[x]['cod']+'" id="btn-view-nota" style="margin-right: 10px;" class="btn btn-primary btn-edit-nota"><i class="far fa-eye"></i></i></a></tr>';
                     }
                     $('.tableNotas').html(cols);
                 }else{
