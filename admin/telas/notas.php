@@ -135,7 +135,9 @@
 
     $( ".btn-add-nota" ).click(function() {
         $('#modal-notas').modal('show');
-        $('.exampleModalLabe2l').html('Inserindo Avaliação');
+        $('#exampleModalLabe2l').html('Inserindo Avaliação');
+        $('.aluno-cod').val('');
+        $('.descricao-avaliacao').val('');
     });
 
     $('.btn-add-new-nota').click(function(){
@@ -144,7 +146,22 @@
         id = $(this).attr('data-id');
 
         if(id != ""){
-            alert('aa')
+            id_aluno = $('.aluno-cod').val();
+            avaliacao = $('.descricao-avaliacao').val();
+            $.ajax({
+                url: 'backend/update_avaliacao.php',
+                data: {id_aluno: id_aluno, avaliacao: avaliacao, id: id},
+                method: 'POST',
+                success: function(data){
+                    if(data == "true"){
+                        alert('Registro alterado com sucesso!');
+                        $('#modal-notas').modal('hide');
+                        reloadTable()
+                    }else{
+                        alert("Erro ao alterar registro"+data);
+                    }
+                }
+            });
         }else{
             id_aluno = $('.aluno-cod').val();
             avaliacao = $('.descricao-avaliacao').val();
