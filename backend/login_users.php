@@ -36,6 +36,7 @@
 
             if(!empty($result)){
                 $_SESSION['cargo_user'] = "Responsável";
+                $_SESSION['id'] = $result[0];
                 echo "Logado com sucesso";
             }else{
                 echo "Erro no login ou senha";
