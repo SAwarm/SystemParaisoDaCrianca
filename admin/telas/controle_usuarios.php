@@ -729,8 +729,8 @@
         $('.doencas-user').val('');
         $('.tipo-sanguineo').val('a_positivo');
         $('.function-user-modal').val('Coordenador(a)');
-        $('.genero-user').val('');
-        $('.estado-user').val('');
+        $('.genero-user').val('Masculino');
+        $('.estado-user').val('SC');
         $('.municipio').val('');
         $('.bairro').val('');
         $('.rua').val('');

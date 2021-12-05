@@ -112,10 +112,6 @@
                     <option value="O-">O-</option>
                 </select>
             </div>
-            <div class="form-group senha-div">
-                <label for="message-text" class="col-form-label">Senha:</label>
-                <input type="text" class="form-control date-senha" id="message-text date-senha"></input>
-            </div>
         </form>
         <br>
       </div>
@@ -265,6 +261,7 @@
 
     $( ".btn-add-user" ).click(function() {
         $('#modal-aluno').modal('show');
+        clean()
     });
     
     $( ".btn-add-turma").click(function() {
@@ -333,23 +330,14 @@
         turma = $('.turma').val();
         msg = "";
 
-        /*if(nome == ""){
+        if(nome == ""){
             msg += "Nome";
-        }
-        if(email == ""){
-           msg += " Email";
         }
         if(data_nasc == ""){
             msg += " Data nascimento";
         }
         if(data_ingresso == ""){
             msg += " Data ingresso";
-        }
-        if(file == ""){
-            msg += " Foto";
-        }
-        if(observacao == ""){
-            msg += " Observação";
         }
         if(descricao == ""){
             msg += " Descrição";
@@ -359,12 +347,6 @@
         }
         if(rg == ""){
             msg += " RG";
-        }
-        if(carga == ""){
-            msg += " Carga";
-        }
-        if(formacao == ""){
-            msg += " Formação";
         }
         if(restricoes == ""){
             msg += " Restrições alimentares";
@@ -391,7 +373,7 @@
         if(msg != ""){
             alert("Digite os campos de: "+ msg);
             event.preventDefault();
-        }*/
+        }
 
         var data = new FormData();
             jQuery.each(jQuery('.file-user')[0].files, function(i, file) {
@@ -571,6 +553,28 @@
                 }
             }
         });
+    }
+
+    function clean(){
+        $('.nome-user').val('');
+        $('.date-nasc').val('');
+        $('.date-ingresso').val('');
+        $('.file-user').val('');
+        $('.descricao-document').val('');
+        $('.cpf-document').val('');
+        $('.rg-document').val('');
+        $('.date-medicamento').val('');
+        $('.restricoes-user').val('');
+        $('.doencas-user').val('');
+        $('.tipo-sanguineo').val('A+');
+        $('.genero-user').val('Masculino');
+        $('.estado-user').val('SC');
+        $('.municipio').val('');
+        $('.bairro').val('');
+        $('.rua').val('');
+        $('.numero-casa').val('');
+        $('.complemento').val('');
+        $('.turma').val('');
     }
 </script>
 
