@@ -127,7 +127,7 @@
                 <label for="message-text" class="col-form-label">Doenças:</label>
                 <textarea type="textarea" class="form-control doencas-user" id="message-text doencas-user"></textarea>
             </div>
-            <div class="form-group senha">
+            <div class="form-group senha-div">
                 <label for="message-text" class="col-form-label">Senha:</label>
                 <input type="text" class="form-control senha" id="message-text senha"></input>
             </div>
@@ -295,7 +295,7 @@
 <script>
 
     $(document).ready(function() {
-        $('.senha-div').hide();
+        //$('.senha-div').hide();
         $('.cod-aluno-div').hide();
         reloadTable()
     });
@@ -413,7 +413,7 @@
         });
     });
 
-    $( ".btn-send-users" ).click(function(event) {
+    $(document).on('click','.btn-send-users', function(event){
         nome = $('.nome-user').val();
         senha = $('.senha').val();
         email = $('.date-email').val();
@@ -440,62 +440,95 @@
         cod_aluno = $('.cod-aluno').val();
         msg = "";
 
-        if(nome == ""){
+        if($('.function-user').val() == "Responsável"){
+            if(nome == ""){
             msg += "Nome";
-        }
-        if(senha == ""){
-            msg += " Senha";
-        }
-        if(email == ""){
-           msg += " Email";
-        }
-        if(data_nasc == ""){
-            msg += " Data nascimento";
-        }
-        if(data_ingresso == ""){
-            msg += " Data ingresso";
-        }
-        if(file == ""){
-            msg += " Foto";
-        }
-        if(observacao == ""){
-            msg += " Observação";
-        }
-        if(descricao == ""){
-            msg += " Descrição";
-        }
-        if(cpf == ""){
-            msg += " CPF";
-        }
-        if(rg == ""){
-            msg += " RG";
-        }
-        if(carga == ""){
-            msg += " Carga";
-        }
-        if(formacao == ""){
-            msg += " Formação";
-        }
-        if(restricoes == ""){
-            msg += " Restrições alimentares";
-        }
-        if(doencas == ""){
-            msg += " Doenças";
-        }
-        if(tipo_sang == ""){
-            msg += " Tipo sanguíneo";
-        }
-        if(estado == ""){
-            msg += " Estado";
-        }
-        if(municipio == ""){
-            msg += " Município";
-        }
-        if(bairro == ""){
-            msg += " Bairro";
-        }
-        if(rua == ""){
-            msg += " Rua";
+            }
+            if(senha == ""){
+                msg += " Senha";
+            }
+            if(email == ""){
+            msg += " Email";
+            }
+            if(data_nasc == ""){
+                msg += " Data nascimento";
+            }
+            if(descricao == ""){
+                msg += " Descrição";
+            }
+            if(cpf == ""){
+                msg += " CPF";
+            }
+            if(rg == ""){
+                msg += " RG";
+            }
+            if(estado == ""){
+                msg += " Estado";
+            }
+            if(municipio == ""){
+                msg += " Município";
+            }
+            if(bairro == ""){
+                msg += " Bairro";
+            }
+            if(rua == ""){
+                msg += " Rua";
+            }
+        }else{
+            if(nome == ""){
+            msg += "Nome";
+            }
+            if(senha == ""){
+                msg += " Senha";
+            }
+            if(email == ""){
+            msg += " Email";
+            }
+            if(data_nasc == ""){
+                msg += " Data nascimento";
+            }
+            if(data_ingresso == ""){
+                msg += " Data ingresso";
+            }
+            if(observacao == ""){
+                msg += " Observação";
+            }
+            if(descricao == ""){
+                msg += " Descrição";
+            }
+            if(cpf == ""){
+                msg += " CPF";
+            }
+            if(rg == ""){
+                msg += " RG";
+            }
+            if(carga == ""){
+                msg += " Carga";
+            }
+            if(formacao == ""){
+                msg += " Formação";
+            }
+            if(restricoes == ""){
+                msg += " Restrições alimentares";
+            }
+            if(doencas == ""){
+                msg += " Doenças";
+            }
+            if(tipo_sang == ""){
+                msg += " Tipo sanguíneo";
+            }
+            if(estado == ""){
+                msg += " Estado";
+            }
+            if(municipio == ""){
+                msg += " Município";
+            }
+            if(bairro == ""){
+                msg += " Bairro";
+            }
+            if(rua == ""){
+                msg += " Rua";
+            }
         }
 
         if(msg != ""){
@@ -534,7 +567,7 @@
         data.append('id_cargah', cargah);
         data.append('id_formacao', formacaoFunc);
 
-        if($(this).attr('data-id') != ""){
+        if($(this).attr('data-id') != "" && msg == ""){
 
             jQuery.each(jQuery('.file-user')[0].files, function(i, file) {
                 data.append('file-'+i, file);
@@ -559,7 +592,7 @@
                 }
             });
 
-        }else{
+        }else if(msg == ""){
             jQuery.each(jQuery('.file-user')[0].files, function(i, file) {
                 data.append('file-'+i, file);
             });
@@ -672,7 +705,7 @@
                     }
                     $('.tableUsuarios').html(cols);
                 }else{
-
+                    $('.tableUsuarios').html("");
                 }
             }
         });
