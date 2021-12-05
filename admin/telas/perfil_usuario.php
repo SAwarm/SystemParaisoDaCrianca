@@ -19,7 +19,7 @@
                         <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Editar Perfil</h4>
+                                    <h4 class="card-title">Informações do Perfil</h4>
                                 </div>
                                 <div class="card-body">
                                     <form>
@@ -27,19 +27,19 @@
                                             <div class="col-md-3 pr-1">
                                                 <div class="form-group">
                                                     <label>Cod</label>
-                                                    <input type="text" class="form-control" placeholder="Cod" value="">
+                                                    <input type="text" class="form-control" placeholder="Cod" value="" id='cod'>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Email</label>
-                                                    <input type="email" class="form-control" placeholder="Email">
+                                                    <input type="email" class="form-control" placeholder="Email" id='email'>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 ">
                                                 <div class="form-group">
                                                     <label>Nome</label>
-                                                    <input type="text" class="form-control" placeholder="Nome" value="">
+                                                    <input type="text" class="form-control" placeholder="Nome" value="" id='nome'>
                                                 </div>
                                             </div>
                                         </div>
@@ -47,19 +47,19 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Município</label>
-                                                    <input type="text" class="form-control" placeholder="Município" value="">
+                                                    <input type="text" class="form-control" placeholder="Município" value="" id='municipio'>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 ">
                                                 <div class="form-group">
                                                     <label>Bairro</label>
-                                                    <input type="text" class="form-control" placeholder="Bairro" value="">
+                                                    <input type="text" class="form-control" placeholder="Bairro" value="" id='bairro'>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Rua</label>
-                                                    <input type="text" class="form-control" placeholder="Rua">
+                                                    <input type="text" class="form-control" placeholder="Rua" id='rua'>
                                                 </div>
                                             </div>
                                         </div>
@@ -67,19 +67,19 @@
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label>Número</label>
-                                                    <input type="number" class="form-control" placeholder="Número" value="">
+                                                    <input type="number" class="form-control" placeholder="Número" value="" id='numero'>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Complemento</label>
-                                                    <input type="text" class="form-control" placeholder="Complemento" value="">
+                                                    <input type="text" class="form-control" placeholder="Complemento" value="" id='complemento'>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Carga Horária</label>
-                                                    <input type="text" class="form-control" placeholder="Carga Horária">
+                                                    <input type="text" class="form-control" placeholder="Carga Horária" id='carga'>
                                                 </div>
                                             </div>
                                         </div>
@@ -87,19 +87,19 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label>Data Ingresso</label>
-                                                    <input type="date" class="form-control" placeholder="Data-Ingresso" value="">
+                                                    <input type="date" class="form-control" placeholder="Data-Ingresso" value="" id='data_ingresso'>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 ">
                                                 <div class="form-group">
                                                     <label>Data Nascimento</label>
-                                                    <input type="date" class="form-control" placeholder="Data-Nascimento" value="">
+                                                    <input type="date" class="form-control" placeholder="Data-Nascimento" value="" id='data_nascimento'>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Formação</label>
-                                                    <input type="text" class="form-control" placeholder="Formação">
+                                                    <input type="text" class="form-control" placeholder="Formação" id='formacao'>
                                                 </div>
                                             </div>
                                         </div>
@@ -107,19 +107,19 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>RG</label>
-                                                    <input type="text" class="form-control" placeholder="RG" value="">
+                                                    <input type="text" class="form-control" placeholder="RG" value="" id="rg">
                                                 </div>
                                             </div>
                                             <div class="col-md-4 ">
                                                 <div class="form-group">
                                                     <label>CPF</label>
-                                                    <input type="text" class="form-control" placeholder="CPF" value="">
+                                                    <input type="text" class="form-control" placeholder="CPF" value="" id="cpf">
                                                 </div>
                                             </div>
                                             <div class="col-md-4 ">
                                                 <div class="form-group">
                                                     <label>Tipo Sanguíneo</label>
-                                                    <select type="date" class="form-control tipo-sanguineo" id="message-text tipo-sanguineo">
+                                                    <select type="date" class="form-control tipo-sanguineo" id="message-text tipo-sanguineo" id="tipo_sangue">
                                                         <option value="a_positivo">A+</option>
                                                         <option value="a_negativo">A-</option>
                                                         <option value="b_positivo">B+</option>
@@ -136,13 +136,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Doenças pré-definidas</label>
-                                                    <textarea style="height: 100px;" rows="4" cols="80" class="form-control" placeholder="Doenças" value=""></textarea>
+                                                    <textarea style="height: 100px;" rows="4" cols="80" class="form-control" placeholder="Doenças" value="" id="doencas"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Restrições alimentares</label>
-                                                    <textarea style="height: 100px;" rows="4" cols="80" class="form-control" placeholder="Restrições" value=""></textarea>
+                                                    <textarea style="height: 100px;" rows="4" cols="80" class="form-control" placeholder="Restrições" value="" id="restricoes"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -150,20 +150,20 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Observação</label>
-                                                    <textarea rows="4" cols="80" class="form-control" placeholder="Observação" value="Mike"></textarea>
+                                                    <textarea rows="4" cols="80" class="form-control" placeholder="Observação" value="Mike" id="observacao"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Trocar Foto: </label>
-                                                    <input type="file"> 
+                                                    <!-- <label>Trocar Foto: </label>
+                                                    <input type="file">  -->
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-fill pull-right btn-atualizar-info">Atualizar Informações</button>
-                                        <div class="clearfix"></div>
+                                        <!-- <button type="submit" class="btn btn-primary btn-fill pull-right btn-atualizar-info">Atualizar Informações</button>
+                                        <div class="clearfix"></div> -->
                                     </form>
                                 </div>
                             </div>
@@ -171,20 +171,17 @@
                         <div class="col-md-4">
                             <div class="card card-user">
                                 <div class="card-image">
-                                    <img src="" alt="...">
+                                    
                                 </div>
                                 <div class="card-body">
                                     <div class="author">
                                         <a href="#">
-                                            <img class="avatar border-gray" src="../assets/img/faces/face-3.jpg" alt="...">
-                                            <h5 class="title text-primary" >Usuário Teste</h5>
+                                            <img class="avatar border-gray img-user" src="" alt="...">
+                                            <h5 class="title text-primary name-user" ></h5>
                                         </a>
-                                        <p class="description">
-                                            usuario10
-                                        </p>
                                     </div>
-                                    <p class="description text-center">
-                                        "Descrição"
+                                    <p class="description text-center obs">
+                                        
                                     </p>
                                 </div>
                             </div>
@@ -215,28 +212,72 @@
 </html>
 
 <script>
+
+    $( document ).ready(function() {
+        infoPerfil();
+    });
+
     $( ".btn-atualizar-info" ).click(function() {
-        $.ajax({
-            url: 'backend/atualizar_perfil.php',
-            data: {id: id},
-            method: 'POST',
-            success: function(data){
-                alert(data)
-                $('#modal-exclusao').modal('hide');
-                popularTableTurmas();
-            }
-        });
+        
     });
 
     function infoPerfil(){
         $.ajax({
-            url: 'backend/info_perfil.php',
-            data: {id: id},
+            url: 'backend/atualizar_perfil.php',
             method: 'POST',
             success: function(data){
-                alert(data)
-                $('#modal-exclusao').modal('hide');
-                popularTableTurmas();
+                console.log(data)
+                jq_json_obj = $.parseJSON(data);
+                cont = jq_json_obj.length;
+                $('#cod').val(jq_json_obj[0][0]);
+                $('#email').val(jq_json_obj[0][2]);
+                $('#nome').val(jq_json_obj[0][1]);
+                $('#municipio').val(jq_json_obj[0]['municipio']);
+                $('#bairro').val(jq_json_obj[0]['bairro']);
+                $('#rua').val(jq_json_obj[0]['rua']);
+                $('#numero').val(jq_json_obj[0]['numero']);
+                $('#complemento').val(jq_json_obj[0]['complemento']);
+                $('#carga').val(jq_json_obj[0][29]);
+                $('#data_ingresso').val(jq_json_obj[0]['datadeingresso']);
+                $('#data_nascimento').val(jq_json_obj[0]['datanasc']);
+                $('#formacao').val(jq_json_obj[0][31]);
+                $('#rg').val(jq_json_obj[0]['RG']);
+                $('#cpf').val(jq_json_obj[0]['CPF']);
+
+                if(jq_json_obj[0]['tipo_sang'] == 1){
+                    $('.tipo-sanguineo').val('a_positivo');
+
+                }else if(jq_json_obj[0]['tipo_sang'] == 2){
+                    $('.tipo-sanguineo').val('a_negativo');
+
+                }else if(jq_json_obj[0]['tipo_sang'] == 3){
+                    $('.tipo-sanguineo').val('b_positivo');
+
+                }else if(jq_json_obj[0]['tipo_sang'] == 4){
+                    $('.tipo-sanguineo').val('b_negativo');
+
+                }else if(jq_json_obj[0]['tipo_sang'] == 5){
+                    $('.tipo-sanguineo').val('ab_positivo');
+
+                }else if(jq_json_obj[0]['tipo_sang'] == 6){
+                    $('.tipo-sanguineo').val('ab_negativo');
+
+                }else if(jq_json_obj[0]['tipo_sang'] == 7){
+                    $('.tipo-sanguineo').val('o_positivo');
+
+                }else if(jq_json_obj[0]['tipo_sang'] == 8){
+                    $('.tipo-sanguineo').val('o_negativo');
+                }
+
+                $('#doencas').val(jq_json_obj[0][35]);
+                $('#restricoes').val(jq_json_obj[0][33]);
+                $('#observacao').val(jq_json_obj[0]['obs']);
+
+                $('.img-user').attr('src', './backend/imagens/'+jq_json_obj[0]['foto'])
+                //$('#carga').val(jq_json_obj[0][0])
+                $('.name-user').html(jq_json_obj[0][1]);
+                $('.obs').html(jq_json_obj[0]['obs'])
+                
             }
         });
     }
