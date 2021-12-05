@@ -29,7 +29,7 @@
                                         <option>Auxiliar</option>
                                         <option>Responsável</option>
                                     </select>
-                                <a type="button" href="#" class="btn btn-primary btn-filter">Filtrar</a>
+                                <!-- <a type="button" href="#" class="btn btn-primary btn-filter">Filtrar</a> -->
                             </div>
                             <div class="card strpied-tabled-with-hover">
                                 <div class="card-header ">
@@ -316,6 +316,7 @@
         $('#modal-users').modal('show');
         $('#exampleModalLabel').html('Inserindo Usuário');
         $('.btn-send-users').attr('data-id', id);
+        clean();
     });
 
     $( ".btn-filter" ).click(function() {
@@ -709,6 +710,33 @@
                 }
             }
         });
+    }
+
+    function clean(){
+        $('.nome-user').val('');
+        $('.senha').val('');
+        $('.date-email').val('');
+        $('.date-nasc').val('');
+        $('.date-ingresso').val('');
+        $('.file-user').val('');
+        $('.observation-user').val('');
+        $('.descricao-document').val('');
+        $('.cpf-document').val('');
+        $('.rg-document').val('');
+        $('.date-carga').val('');
+        $('.date-formacao').val('');
+        $('.restricoes-user').val('');
+        $('.doencas-user').val('');
+        $('.tipo-sanguineo').val('a_positivo');
+        $('.function-user-modal').val('Coordenador(a)');
+        $('.genero-user').val('');
+        $('.estado-user').val('');
+        $('.municipio').val('');
+        $('.bairro').val('');
+        $('.rua').val('');
+        $('.numero-casa').val('');
+        $('.complemento').val('');
+        $('.cod-aluno').val('');
     }
 
 </script>
