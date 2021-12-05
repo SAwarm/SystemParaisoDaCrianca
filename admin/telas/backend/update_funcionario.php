@@ -137,7 +137,7 @@
         if($new_name != ""){
 
             $sqlUpdate = "UPDATE funcionario SET nome='$nome', email='$email', datanasc='$data_nasc', datadeingresso='$data_ingresso',
-            foto='$new_name', obs='$observacao', genero='$genero', tipo_sang='$tipo_sang', senha='$senha' where funcionario.cod = '$id_user'";
+            foto='$new_name', obs='$observacao', genero='$genero', funcao='$id_funcao', tipo_sang='$tipo_sang', senha='$senha' where funcionario.cod = '$id_user'";
     
             if (mysqli_query($connection, $sqlUpdate)) {
                 //echo "Registro atualizado com sucesso!";
@@ -152,21 +152,15 @@
     
                         if (mysqli_query($connection, $sqlUpdate)) {
                             $sqlUpdate = "UPDATE doencaspre SET descricao='$doencas' WHERE cod='$id_doencas'";
-    
-                            if (mysqli_query($connection, $sqlUpdate)) {
-                                $sqlUpdate = "UPDATE funcao SET descricao='$funcao' WHERE cod='$id_funcao'";
-    
+
+                            if(mysqli_query($connection, $sqlUpdate)){
+                                $sqlUpdate = "UPDATE cargah SET descricao='$carga' WHERE cod='$id_carga'";
+
                                 if(mysqli_query($connection, $sqlUpdate)){
-                                    $sqlUpdate = "UPDATE cargah SET descricao='$carga' WHERE cod='$id_carga'";
-    
+                                    $sqlUpdate = "UPDATE formacao SET descricao='$formacao' WHERE cod='$id_formacao'";
+
                                     if(mysqli_query($connection, $sqlUpdate)){
-                                        $sqlUpdate = "UPDATE formacao SET descricao='$formacao' WHERE cod='$id_formacao'";
-    
-                                        if(mysqli_query($connection, $sqlUpdate)){
-                                            echo "true";
-                                        }else{
-                                            echo "Erro de atualização do registro: " . mysqli_error($connection);
-                                        }
+                                        echo "true";
                                     }else{
                                         echo "Erro de atualização do registro: " . mysqli_error($connection);
                                     }
@@ -190,7 +184,7 @@
             }
         }else{
             $sqlUpdate = "UPDATE funcionario SET nome='$nome', email='$email', datanasc='$data_nasc', datadeingresso='$data_ingresso',
-            obs='$observacao', genero='$genero', tipo_sang='$tipo_sang', senha='$senha' where funcionario.cod = '$id_user'";
+            obs='$observacao', genero='$genero', tipo_sang='$tipo_sang', funcao='$id_funcao', senha='$senha' where funcionario.cod = '$id_user'";
     
             if (mysqli_query($connection, $sqlUpdate)) {
                 //echo "Registro atualizado com sucesso!";
@@ -206,20 +200,14 @@
                         if (mysqli_query($connection, $sqlUpdate)) {
                             $sqlUpdate = "UPDATE doencaspre SET descricao='$doencas' WHERE cod='$id_doencas'";
     
-                            if (mysqli_query($connection, $sqlUpdate)) {
-                                $sqlUpdate = "UPDATE funcao SET descricao='$funcao' WHERE cod='$id_funcao'";
-    
+                            if(mysqli_query($connection, $sqlUpdate)){
+                                $sqlUpdate = "UPDATE cargah SET descricao='$carga' WHERE cod='$id_carga'";
+
                                 if(mysqli_query($connection, $sqlUpdate)){
-                                    $sqlUpdate = "UPDATE cargah SET descricao='$carga' WHERE cod='$id_carga'";
-    
+                                    $sqlUpdate = "UPDATE formacao SET descricao='$formacao' WHERE cod='$id_formacao'";
+
                                     if(mysqli_query($connection, $sqlUpdate)){
-                                        $sqlUpdate = "UPDATE formacao SET descricao='$formacao' WHERE cod='$id_formacao'";
-    
-                                        if(mysqli_query($connection, $sqlUpdate)){
-                                            echo "true";
-                                        }else{
-                                            echo "Erro de atualização do registro: " . mysqli_error($connection);
-                                        }
+                                        echo "true";
                                     }else{
                                         echo "Erro de atualização do registro: " . mysqli_error($connection);
                                     }

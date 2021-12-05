@@ -136,13 +136,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Doenças pré-definidas</label>
-                                                    <textarea style="height: 100px;" rows="4" cols="80" class="form-control" placeholder="Observação" value=""></textarea>
+                                                    <textarea style="height: 100px;" rows="4" cols="80" class="form-control" placeholder="Doenças" value=""></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Restrições alimentares</label>
-                                                    <textarea style="height: 100px;" rows="4" cols="80" class="form-control" placeholder="Observação" value=""></textarea>
+                                                    <textarea style="height: 100px;" rows="4" cols="80" class="form-control" placeholder="Restrições" value=""></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -150,7 +150,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Observação</label>
-                                                    <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike"></textarea>
+                                                    <textarea rows="4" cols="80" class="form-control" placeholder="Observação" value="Mike"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -162,7 +162,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-fill pull-right">Atualizar Informações</button>
+                                        <button type="submit" class="btn btn-primary btn-fill pull-right btn-atualizar-info">Atualizar Informações</button>
                                         <div class="clearfix"></div>
                                     </form>
                                 </div>
@@ -171,7 +171,7 @@
                         <div class="col-md-4">
                             <div class="card card-user">
                                 <div class="card-image">
-                                    <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="...">
+                                    <img src="" alt="...">
                                 </div>
                                 <div class="card-body">
                                     <div class="author">
@@ -213,6 +213,35 @@
 <script src="../assets/js/demo.js"></script>
 
 </html>
+
+<script>
+    $( ".btn-atualizar-info" ).click(function() {
+        $.ajax({
+            url: 'backend/atualizar_perfil.php',
+            data: {id: id},
+            method: 'POST',
+            success: function(data){
+                alert(data)
+                $('#modal-exclusao').modal('hide');
+                popularTableTurmas();
+            }
+        });
+    });
+
+    function infoPerfil(){
+        $.ajax({
+            url: 'backend/info_perfil.php',
+            data: {id: id},
+            method: 'POST',
+            success: function(data){
+                alert(data)
+                $('#modal-exclusao').modal('hide');
+                popularTableTurmas();
+            }
+        });
+    }
+</script>
+
 <?php } else{
     include_once('./erro.php');
 }

@@ -35,16 +35,6 @@
             $genero = 3;
         }
 
-        if($funcao == "Coordenador(a)"){
-            $funcao = 2;
-        }else if($funcao == "Professor(a)"){
-            $funcao = 3;
-        }else if($funcao == "Auxiliar"){
-            $funcao = 1;
-        }else if($funcao == "Responsável"){
-            $funcao = 4;
-        }
-
         if($tipo_sang == "a_positivo"){
             $tipo_sang = 1;
         }else if($tipo_sang == "a_negativo"){
