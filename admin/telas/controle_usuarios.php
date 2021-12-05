@@ -27,7 +27,7 @@
                                         <option>Coordenador(a)</option>
                                         <option>Professor(a)</option>
                                         <option>Auxiliar</option>
-                                        <option>Responsáveis</option>
+                                        <option>Responsável</option>
                                     </select>
                                 <a type="button" href="#" class="btn btn-primary btn-filter">Filtrar</a>
                             </div>
@@ -51,7 +51,7 @@
                             </div>
                         </div>
 
-<div class="modal fade" id="modal-users" style="margin-top: -500px; overflow-y:auto;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-users" style="margin-top: -450px; overflow-y:auto;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -296,6 +296,7 @@
 
     $(document).ready(function() {
         $('.senha-div').hide();
+        $('.cod-aluno-div').hide();
         reloadTable()
     });
 
@@ -354,6 +355,7 @@
                 $('.date-formacao').val(jq_json_obj[0][31]);
                 $('.restricoes-user').val(jq_json_obj[0][33]);
                 $('.doencas-user').val(jq_json_obj[0][35]);
+                $('.cod-aluno').val(jq_json_obj[0]['cod_aluno']);
 
                 if(jq_json_obj[0]['tipo_sang'] == 1){
                     $('.tipo-sanguineo').val('a_positivo');
@@ -610,6 +612,27 @@
         });
     });
 
+    $('.function-user').change(function() {
+        reloadTable();
+        if($(this).val() == "Responsável"){
+            $('.date-ingresso-div').hide();
+            $('.doencas-div').hide();
+            $('.restricoes-div').hide();
+            $('.date-carga-div').hide();
+            $('.date-formacao-div').hide();
+            $('.observation-user-div').hide();
+            $('.cod-aluno-div').show();
+        }else{
+            $('.cod-aluno-div').hide();
+            $('.date-ingresso-div').show();
+            $('.doencas-div').show();
+            $('.restricoes-div').show();
+            $('.date-carga-div').show();
+            $('.date-formacao-div').show();
+            $('.observation-user-div').show();
+        }
+    });
+
     $(".btn-add-document").click(function(){
         $('#modal-document').modal('show');
     })
@@ -637,6 +660,9 @@
                     cont = jq_json_obj.length;
                     cols = "";
                     for(x = 0; x < cont; x++){
+                        if(jq_json_obj[x][37] == undefined){
+                            jq_json_obj[x][37] = "Responsável";
+                        }
                         cols += "<tr><td>"+jq_json_obj[x][0]+"</td>"+
                         "<td>"+jq_json_obj[x]['nome']+"</td>" +
                         "<td>"+jq_json_obj[x][37]+"</td>" +

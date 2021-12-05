@@ -2,9 +2,24 @@
 
     require_once('./connection.php');
 
+    $id = $_POST['id'];
     $funcao = $_POST['funcao'];
     if($funcao == "Responsável"){
-
+        $query = "SELECT * FROM responsavel 
+        inner join doctos on doctos.cod = responsavel.doctos
+        inner join endereco on endereco.cod = responsavel.endereco where responsavel.cod='$id'";
+    
+        $result = mysqli_query($connection, $query);
+    
+        while($row = mysqli_fetch_array($result)) {
+            $rows [] = $row;
+        }
+    
+        if(!empty($rows)){
+            echo json_encode($rows);
+        }else{
+            echo "null";
+        }
     }else{
         $id = $_POST['id'];
 

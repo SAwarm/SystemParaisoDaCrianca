@@ -5,26 +5,21 @@ require_once('./connection.php');
 $funcao = $_POST['func'];
 
 if($funcao == "Responsável"){
-    // $query = "SELECT * FROM responsavel 
-    // inner join doctos on doctos.cod = responsavel.doctos
-    // inner join endereco on endereco.cod = responsavel.endereco
-    // inner join cargah on cargah.cod = responsavel.cargah
-    // inner join formacao on formacao.cod = responsavel.formacao
-    // inner join restalimentar on restalimentar.cod = responsavel.restalimentar
-    // inner join doencaspre on doencaspre.cod = responsavel.doencaspre
-    // where funcao='$funcao'";
+    $query = "SELECT * FROM responsavel 
+    inner join doctos on doctos.cod = responsavel.doctos
+    inner join endereco on endereco.cod = responsavel.endereco";
 
-    // $result = mysqli_query($connection, $query);
+    $result = mysqli_query($connection, $query);
 
-    // while($row = mysqli_fetch_array($result)) {
-    //     $rows [] = $row;
-    // }
+    while($row = mysqli_fetch_array($result)) {
+        $rows [] = $row;
+    }
 
-    // if(!empty($rows)){
-    //     echo json_encode($rows);
-    // }else{
-    //     echo "null";
-    // }
+    if(!empty($rows)){
+        echo json_encode($rows);
+    }else{
+        echo "null";
+    }
 }else{
     if($funcao == "Coordenador(a)"){
         $funcao = 2;
