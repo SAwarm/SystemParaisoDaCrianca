@@ -9,7 +9,9 @@
             include_once("./menuAcesso/menuCoordenador.php"); 
         }else if ($_SESSION['cargo_user'] == "Professor"){
             include_once("./menuAcesso/menuProfessor.php"); 
-        }else if ($_SESSION['cargo_user'] == "Auxiliar"){
+        }else if ($_SESSION['cargo_user'] == "Responsável"){
+            include_once('./menuAcesso/menuResponsavel.php');
+        } else if ($_SESSION['cargo_user'] == "Auxiliar"){
             include_once('./erro.php');
             die();
         } ?>

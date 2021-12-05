@@ -29,13 +29,13 @@
             }
     }else{  
             $matricula = $_POST['matricula'];
-            $querySelect = "SELECT * from aluno where MD5(cod)='$matricula' and senha='$senha'";
+            $querySelect = "SELECT * from responsavel where MD5(cod_aluno)='$matricula' and senha='$senha'";
 
             $result = mysqli_query($connection, $querySelect);
             $result = mysqli_fetch_array($result);
 
             if(!empty($result)){
-                $_SESSION['cargo_user'] = "Consulta";
+                $_SESSION['cargo_user'] = "Responsável";
                 echo "Logado com sucesso";
             }else{
                 echo "Erro no login ou senha";

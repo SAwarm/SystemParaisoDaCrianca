@@ -11,6 +11,8 @@
         include_once("./menuAcesso/menuProfessor.php");
     }else if ($_SESSION['cargo_user'] == "Auxiliar"){
         include_once("./menuAcesso/menuAuxiliar.php"); 
+    }else if ($_SESSION['cargo_user'] == "Responsável"){
+        include_once('./menuAcesso/menuResponsavel.php');
     } ?>
 
             <div class="content">
