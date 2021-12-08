@@ -30,12 +30,12 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <li>
+                    <!-- <li>
                         <a class="nav-link" href="./perfil_usuario.php">
                             <i class="nc-icon nc-circle-09"></i>
                             <p>Perfil do Usuário</p>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="./notas_responsavel.php">
                             <i class="nc-icon nc-ruler-pencil"></i>

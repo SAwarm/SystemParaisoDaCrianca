@@ -130,7 +130,7 @@
                 $('#descricao-avaliacao').val(jq_json_obj[0]['nota']);
             }
         });
-    })
+    });
 
     function reloadTable(){
         $.ajax({

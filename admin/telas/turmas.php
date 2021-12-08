@@ -119,8 +119,11 @@
     
     $( ".btn-add-turma").click(function(e) {
         turma = $('.turma').val();
+        if(turma == ""){
+            alert("Digite o nome de alguma turma!")
+        }
         
-        if($('.btn-add-turma').html() == "Salvar"){
+        if($('.btn-add-turma').html() == "Salvar" && turma != ""){
             id = $(this).attr('data-id');
             $.ajax({
                 url: 'backend/update_turma.php',
@@ -133,7 +136,7 @@
                     popularTableTurmas();
                 }
             });
-        }else{
+        }else if(turma != ""){
             $.ajax({
                 url: 'backend/cadastro_turma.php',
                 data: {turma: turma},

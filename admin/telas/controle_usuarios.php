@@ -17,7 +17,7 @@
                         <div class="col-md-12">
                             <br>
                             <div style="margin-bottom: 2%;">
-                                <a type="button" href="#" class="btn btn-primary btn-fill btn-add-user" style="margin-right: 62.5%;">Adicionar Novo Usuário</a>
+                                <a type="button" href="#" class="btn btn-primary btn-fill btn-add-user" style="margin-right: 68.5%;">Adicionar Novo Usuário</a>
                                     <select class="form-group function-user" style="height: 50%;
                                         padding: 8px 20px;
                                         margin: 6px 0;
@@ -585,7 +585,7 @@
                 success: function(data){
                     if(data == "true"){
                         reloadTable()
-                        alert("Alterado com sucesso!");
+                        alert("Registro alterado com sucesso!");
                     }else{
                         reloadTable()
                         alert("Erro ao alterar registro! "+data);

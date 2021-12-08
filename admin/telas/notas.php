@@ -51,7 +51,7 @@
                                 <div class="modal-body message-modal" style="color: black">
                                     <form>
                                         <div class="form-group descricao-document-div">
-                                            <label for="message-text" class="col-form-label">Aluno:</label>
+                                            <label for="message-text" class="col-form-label">Cod Aluno:</label>
                                             <input type="number" class="form-control aluno-cod" id="message-text aluno-cod"></input>                 
                                         </div>
                                         <div class="form-group descricao-document-div">
