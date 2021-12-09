@@ -210,7 +210,7 @@ Paginas
           <label for="psw"><b>Senha</b></label>
           <input type="password" placeholder="Digite sua senha" name="psw" class="input-senha-responsavel" required> 
         <button  class="btn-colaborador" id="btn-responsavel" type="button" style="background-color:#5b3491; color:#cdb0f5;">Entrar</button>
-         <span class="psw"><a href="#" align="center" style="color: black;">Esqueceu sua senha?</a></span>
+         <span class="psw"><a align="center" style="color: black; cursor: pointer;" class="btn-responsavel-senha">Esqueceu sua senha?</a></span>
         </div>
         </div>
 
@@ -240,7 +240,7 @@ Paginas
         <button  class="btn-colaborador" type="button" style="background-color:#5b3491; color:#cdb0f5;" id="btn-colaborador">Entrar</button>
         <div class="container" style="background-color:#f1f1f1">
           <button type="button"  onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
-          <span class="psw"><a href="#" style="color: black;">Esqueceu sua senha?</a></span>
+          <span class="psw"><a style="color: black; cursor: pointer;" class="btn-colaborador-senha">Esqueceu sua senha?</a></span>
         </div>
         </form>
         </div>
@@ -264,6 +264,41 @@ Paginas
       </div>
       <div class="modal-footer">
           <br>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal_recuperar_senha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Para trocar de senha digite os campos abaixo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body message-modal" style="color: black">
+            <form>
+                <div class="form-group">
+                    <label for="" class="col-form-label">Email:</label>
+                    <input type="text" class="form-control email" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-form-label">Cpf:</label>
+                    <input type="text" class="form-control cpf" id="cpf">
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-form-label">Nova senha:</label>
+                    <input type="password" class="form-control nova_senha" id="nova_senha">
+                </div>
+            </form>
+        <br>
+      </div>
+      <div class="modal-footer">
+          <br>
+          <button type="button" class="btn btn-primary btn-fill btn-troca-senha" style="cursor: pointer;">Trocar Senha</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
       </div>
     </div>
@@ -323,7 +358,7 @@ Paginas
         // O modal
         var modal = document.getElementById('id01');
 
-        // Clique fora do modal o fecha
+        // Clique fora =  o modal fecha
         window.onclick = function(event) {
         if (event.target == modal) {
         modal.style.display = "none";
@@ -377,6 +412,49 @@ Paginas
         }
     });
 
+    acao = "";
+    $('.btn-troca-senha').click(function(){
+        email = $('.email').val();
+        cpf = $('.cpf').val();
+        senha = $('.nova_senha').val();
+
+        if(email != "" && cpf != "" && senha != ""){
+            $.ajax({
+                url: 'backend/trocar_senha.php',
+                data: {acao: acao, email: email, cpf: cpf, senha: senha},
+                method: 'POST',
+                success: function(data){
+                    if(data == "true"){
+                        $('.email').val('');
+                        $('.cpf').val('');
+                        $('.nova_senha').val('');
+                        alert("Senha alterada com sucesso");
+                    }else{
+                        alert("Digite o seu email e CPF corretos!");
+                    }
+                }
+            });
+        }else{
+            alert("Digite todos os campos");
+        }
+    });
+
+    $('.btn-responsavel-senha').click(function(){
+        $('.email').val('');
+        $('.cpf').val('');
+        $('.nova_senha').val('');
+        $('#modal_recuperar_senha').modal('show');
+        acao = "responsavel";
+    });
+
+    $('.btn-colaborador-senha').click(function(){
+        $('.email').val('');
+        $('.cpf').val('');
+        $('.nova_senha').val('');
+        $('#modal_recuperar_senha').modal('show');
+        acao = "colaborador";
+    });
+
     $( "#btn-responsavel" ).click(function() {
         matricula = $('.input-matricula-responsavel').val();
         senha = $('.input-senha-responsavel').val();
@@ -386,12 +464,12 @@ Paginas
             $("#exampleModal").modal("show");
         }else{
                 $.ajax({
-                method: "POST",
-                url: "backend/login_users.php",
-                data: { matricula: matricula, senha: senha},
-                beforeSend : function(){
-                    // depois do envio
-                }
+                    method: "POST",
+                    url: "backend/login_users.php",
+                    data: { matricula: matricula, senha: senha},
+                    beforeSend : function(){
+                        // depois do envio
+                    }
             })
             .done(function(msg){
                 if(msg != "Erro no login ou senha"){
