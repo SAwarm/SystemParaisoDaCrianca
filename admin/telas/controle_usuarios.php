@@ -51,7 +51,7 @@
                             </div>
                         </div>
 
-<div class="modal fade" id="modal-users" style="margin-top: -450px; overflow-y:auto;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-users" style="margin-top: -500px; overflow-y:auto;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -646,7 +646,7 @@
         });
     });
 
-    $('.function-user').change(function() {
+    $('.function-user-modal').change(function() {
         reloadTable();
         if($(this).val() == "Responsável"){
             $('.date-ingresso-div').hide();
@@ -656,6 +656,7 @@
             $('.date-formacao-div').hide();
             $('.observation-user-div').hide();
             $('.cod-aluno-div').show();
+            $("#modal-users").css({"margin-top": "-380px"});
         }else{
             $('.cod-aluno-div').hide();
             $('.date-ingresso-div').show();
@@ -664,8 +665,10 @@
             $('.date-carga-div').show();
             $('.date-formacao-div').show();
             $('.observation-user-div').show();
+            $("#modal-users").css({"margin-top": "-500px"});
         }
     });
+    
 
     $(".btn-add-document").click(function(){
         $('#modal-document').modal('show');
