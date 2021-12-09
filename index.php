@@ -239,7 +239,7 @@ Paginas
           <input type="password" placeholder="Digite sua senha" name="senha_colaborador" class="input-senha" required> 
         <button  class="btn-colaborador" type="button" style="background-color:#5b3491; color:#cdb0f5;" id="btn-colaborador">Entrar</button>
         <div class="container" style="background-color:#f1f1f1">
-          <button type="button"  onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
+          <button type="button"  onclick="document.getElementById('id01').style.display='none'" class="btn-colaborador">Cancelar</button>
           <span class="psw"><a style="color: black; cursor: pointer;" class="btn-colaborador-senha">Esqueceu sua senha?</a></span>
         </div>
         </form>
