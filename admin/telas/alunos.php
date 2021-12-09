@@ -265,7 +265,7 @@
 
     $( ".btn-add-user" ).click(function() {
         $('#modal-aluno').modal('show');
-        $('#exampleModalLabel').html('Editando Aluno');
+        $('#exampleModalLabel').html('Cadastro Novo Aluno');
         $('.btn-send-aluno').attr('data-id', '');
         clean()
     });
