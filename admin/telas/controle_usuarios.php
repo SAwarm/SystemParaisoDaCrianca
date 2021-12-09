@@ -33,7 +33,7 @@
                             </div>
                             <div class="card strpied-tabled-with-hover">
                                 <div class="card-header ">
-                                    <h4 class="card-title">Controle dos Funcionários</h4>
+                                    <h4 class="card-title">Controle dos Usuários</h4>
                                 </div>
                                 <div class="card-body table-full-width table-responsive">
                                     <table class="table table-hover table-striped">
