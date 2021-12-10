@@ -403,6 +403,25 @@
                 $('#exampleModalLabel').html('Editando Usuário');
                 $('.btn-send-users').attr('data-id', id)
 
+                if($('.function-user-modal').val() == "Responsável"){
+                    $('.date-ingresso-div').hide();
+                    $('.doencas-div').hide();
+                    $('.restricoes-div').hide();
+                    $('.date-carga-div').hide();
+                    $('.date-formacao-div').hide();
+                    $('.observation-user-div').hide();
+                    $('.cod-aluno-div').show();
+                    $("#modal-users").css({"margin-top": "-380px"});
+                }else{
+                    $('.cod-aluno-div').hide();
+                    $('.date-ingresso-div').show();
+                    $('.doencas-div').show();
+                    $('.restricoes-div').show();
+                    $('.date-carga-div').show();
+                    $('.date-formacao-div').show();
+                    $('.observation-user-div').show();
+                    $("#modal-users").css({"margin-top": "-500px"});
+                }
                 doctos = jq_json_obj[0]['doctos'];
                 endereco = jq_json_obj[0]['endereco'];
                 restAlim = jq_json_obj[0]['restalimentar'];
@@ -476,14 +495,6 @@
                 msg += " Rua";
             }
 
-            $('.date-ingresso-div').hide();
-            $('.doencas-div').hide();
-            $('.restricoes-div').hide();
-            $('.date-carga-div').hide();
-            $('.date-formacao-div').hide();
-            $('.observation-user-div').hide();
-            $('.cod-aluno-div').show();
-            $("#modal-users").css({"margin-top": "-380px"});
         }else{
             if(nome == ""){
             msg += "Nome";
@@ -539,14 +550,7 @@
             if(rua == ""){
                 msg += " Rua";
             }
-            $('.cod-aluno-div').hide();
-            $('.date-ingresso-div').show();
-            $('.doencas-div').show();
-            $('.restricoes-div').show();
-            $('.date-carga-div').show();
-            $('.date-formacao-div').show();
-            $('.observation-user-div').show();
-            $("#modal-users").css({"margin-top": "-500px"});
+           
         }
 
         if(msg != ""){
