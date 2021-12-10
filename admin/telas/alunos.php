@@ -546,7 +546,7 @@
                     cont = jq_json_obj.length;
                     cols = "";
                     for(x = 0; x < cont; x++){
-                        cols += "<tr><td>"+jq_json_obj[x]['cod']+"</td>"+
+                        cols += "<tr><td>"+jq_json_obj[x][0]+"</td>"+
                         "<td>"+jq_json_obj[x][1]+"</td>" +
                         "<td>"+jq_json_obj[x]['descricao']+"</td>" +
                         "<td>"+jq_json_obj[x]['nome']+"</td>" +
