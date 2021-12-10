@@ -475,7 +475,7 @@ Paginas
                 if(msg != "Erro no login ou senha"){
                     $(".message-modal").html("Usuário logado com sucesso!");
                     $("#exampleModal").modal("show");
-                    setTimeout(() => { location.replace('./admin/telas/notas.php');  }, 2000);
+                    setTimeout(() => { location.replace('./admin/telas/notas_responsavel.php');  }, 2000);
                 }else{
                     $(".message-modal").html(msg);
                     $("#exampleModal").modal("show");

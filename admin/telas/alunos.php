@@ -29,8 +29,8 @@
                                             <th>Id</th>
                                             <th>Nome</th>
                                             <th>Turma</th>
-                                            <th>Nome Responsável</th>
-                                            <th>Email Responsável</th>
+                                            <!-- <th>Nome Responsável</th>
+                                            <th>Email Responsável</th> -->
                                             <th>Opções</th>
                                         </thead>
                                         <tbody class="tableAluno">
@@ -549,8 +549,8 @@
                         cols += "<tr><td>"+jq_json_obj[x][0]+"</td>"+
                         "<td>"+jq_json_obj[x][1]+"</td>" +
                         "<td>"+jq_json_obj[x]['descricao']+"</td>" +
-                        "<td>"+jq_json_obj[x]['nome']+"</td>" +
-                        "<td>"+jq_json_obj[x]['email']+"</td>" +
+                        // "<td>"+jq_json_obj[x]['nome']+"</td>" +
+                        // "<td>"+jq_json_obj[x]['email']+"</td>" +
                         '<td><a type="button" href="#" data-id="'+jq_json_obj[x][0]+'" id="btn-edit-aluno" style="margin-right: 10px;" class="btn btn-success btn-edit-turma"><i class="far fa-edit"></i></a>'+
                         '<a type="button" href="#" data-id="'+jq_json_obj[x][0]+'" class="btn btn-danger btn-exclude-aluno"><i class="fas fa-times-circle"></i></a></td></tr>';
                     }
