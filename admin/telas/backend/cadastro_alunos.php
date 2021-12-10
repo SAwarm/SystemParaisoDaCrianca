@@ -126,7 +126,7 @@
         if(mysqli_query($connection, $queryInsert)){
             echo "true";
         }else{
-            echo "false";
+            echo "false".mysqli_error($connection);
         }
 
     

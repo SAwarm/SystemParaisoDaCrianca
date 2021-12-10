@@ -582,6 +582,7 @@
         $('.numero-casa').val('');
         $('.complemento').val('');
         $('.turma').val('');
+        $('#matricula-aluno').val('');
     }
 </script>
 

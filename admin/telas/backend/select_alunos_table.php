@@ -1,7 +1,7 @@
 <?php
 
     require_once('./connection.php');
-    $query = "SELECT * FROM aluno inner join turma on turma.cod = aluno.turma inner join responsavel on responsavel.cod_aluno = aluno.cod";
+    $query = "SELECT * FROM aluno inner join turma on turma.cod = aluno.turma";
 
     $result = mysqli_query($connection, $query);
 
