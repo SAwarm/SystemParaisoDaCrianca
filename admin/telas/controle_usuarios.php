@@ -24,10 +24,10 @@
                                         display: inline-block;
                                         border: 1px solid #ccc;
                                         box-sizing: border-box;">
-                                        <option>Coordenador(a)</option>
-                                        <option>Professor(a)</option>
-                                        <option>Auxiliar</option>
-                                        <option>Responsável</option>
+                                         <option value="Coordenador(a)">Coordenador(a)</option>
+                                        <option value="Professor(a)">Professor(a)</option>
+                                        <option value="Auxiliar">Auxiliar</option>
+                                        <option value="Responsável">Responsável</option>
                                     </select>
                                 <!-- <a type="button" href="#" class="btn btn-primary btn-filter">Filtrar</a> -->
                             </div>
@@ -301,7 +301,7 @@
     });
 
     $( ".function-user" ).change(function() {
-        //
+        reloadTable()
     });
 
     $(window).resize(function () {
@@ -441,7 +441,7 @@
         cod_aluno = $('.cod-aluno').val();
         msg = "";
 
-        if($('.function-user').val() == "Responsável"){
+        if($('.function-user-modal').val() == "Responsável"){
             if(nome == ""){
             msg += "Nome";
             }
@@ -475,6 +475,15 @@
             if(rua == ""){
                 msg += " Rua";
             }
+
+            $('.date-ingresso-div').hide();
+            $('.doencas-div').hide();
+            $('.restricoes-div').hide();
+            $('.date-carga-div').hide();
+            $('.date-formacao-div').hide();
+            $('.observation-user-div').hide();
+            $('.cod-aluno-div').show();
+            $("#modal-users").css({"margin-top": "-380px"});
         }else{
             if(nome == ""){
             msg += "Nome";
@@ -530,6 +539,14 @@
             if(rua == ""){
                 msg += " Rua";
             }
+            $('.cod-aluno-div').hide();
+            $('.date-ingresso-div').show();
+            $('.doencas-div').show();
+            $('.restricoes-div').show();
+            $('.date-carga-div').show();
+            $('.date-formacao-div').show();
+            $('.observation-user-div').show();
+            $("#modal-users").css({"margin-top": "-500px"});
         }
 
         if(msg != ""){

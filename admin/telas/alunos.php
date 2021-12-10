@@ -405,7 +405,7 @@
         data.append('complemento', complemento);
         data.append('id_turma', turma);
 
-        if($(this).attr('data-id') != "" && msg == ""){
+        if($(this).attr('data-id') != ""){
             data.append('id_aluno', $(this).attr('data-id'));
             data.append('id_doctos', doctos);
             data.append('id_endereco', endereco);
@@ -431,7 +431,7 @@
                     }
                 }
             });
-        }else if(msg == ""){
+        }else{
             jQuery.ajax({
                 url: 'backend/cadastro_alunos.php',
                 data: data,

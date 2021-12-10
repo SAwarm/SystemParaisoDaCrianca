@@ -35,24 +35,6 @@
             $genero = 3;
         }
 
-        if($tipo_sang == "a_positivo"){
-            $tipo_sang = 1;
-        }else if($tipo_sang == "a_negativo"){
-            $tipo_sang = 2;
-        }else if($tipo_sang == "b_positivo"){
-            $tipo_sang = 3;
-        }else if($tipo_sang == "b_negativo"){
-            $tipo_sang = 4;
-        }else if($tipo_sang == "ab_positivo"){
-            $tipo_sang = 5;
-        }else if($tipo_sang == "ab_negativo"){
-            $tipo_sang = 6;
-        }else if($tipo_sang == "o_positivo"){
-            $tipo_sang = 7;
-        }else if($tipo_sang == "o_negativo"){
-            $tipo_sang = 8;
-        }
-
         function CadastroDocument($connection, $descricao, $cpf, $rg){
             $queryInsert = "INSERT INTO doctos (descricao, cpf, rg) VALUES ('$descricao', '$cpf', '$rg')";
     
@@ -80,13 +62,12 @@
             //echo("Imagen enviada com sucesso!");
         }
 
-        $queryInsert = "INSERT INTO responsável 
+        $queryInsert = "INSERT INTO responsavel 
             (
                 nome,
                 email,
                 datanasc,
                 foto,
-                obs,
                 doctos,
                 genero,
                 endereco,
@@ -99,7 +80,6 @@
                 '$email',
                 '$data_nasc',
                 '$new_name',
-                '$observacao',
                 '$idDoc',
                 '$genero',
                 '$idEndereco',
@@ -111,7 +91,7 @@
             echo "true";
         }else{
             // .mysqli_error($connection);
-            echo "false";
+            echo "false".mysqli_error($connection);
         }
 
 
